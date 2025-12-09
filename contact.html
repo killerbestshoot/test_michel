@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Michel Cell</title>
+    <style>
+        /* RESET ET BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray-light: #f1f5f9;
+            --gray-medium: #e2e8f0;
+            --gray: #64748b;
+            --gray-dark: #334155;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 1rem auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* STYLES LIQUID GLASS */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+            overflow: hidden;
+        }
+
+        .glass-nav {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-actions button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+            color: var(--text);
+        }
+
+        .nav-actions button:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 8rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* LOCATIONS SECTION */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .location-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--glass-border);
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--primary);
+        }
+
+        .location-info {
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-icon {
+            margin-right: 0.8rem;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .map-placeholder {
+            height: 200px;
+            background: var(--gray-light);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            margin-top: 1.5rem;
+        }
+
+        /* CONTACT FORM */
+        .contact-form-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--gray-medium);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        /* FAQ SECTION */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text);
+            padding: 4rem 0 2rem;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-medium);
+            color: var(--text-light);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .locations-grid,
+            .form-row,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-form-container {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="glass-nav">
+        <div class="container">
+            <nav>
+                <div class="logo">Michel Cell</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="produits.html">Smartphones</a></li>
+                    <li><a href="accessoires.html">Accessoires</a></li>
+                    <li><a href="reparations.html">Réparations</a></li>
+                    <li><a href="contact.html" style="color: var(--primary);">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="search-btn">🔍</button>
+                    <button class="cart-btn">🛒</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1>Contactez-nous</h1>
+            <p>Nous sommes à votre disposition dans nos deux boutiques aux Cayes et au Cap-Haïtien pour répondre à tous vos besoins numériques.</p>
+        </div>
+    </section>
+
+    <!-- LOCATIONS SECTION -->
+    <section class="locations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos boutiques</h2>
+            </div>
+            <div class="locations-grid">
+                <!-- Cayes Location -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-icon">🏪</div>
+                        <h3>Michel Cell - Les Cayes</h3>
+                    </div>
+                    <div class="location-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>123 Rue Cartagena, Les Cayes, Haïti</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <span>+509 36 98 45 67</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">✉️</span>
+                            <span>cayes@michelcell.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>Lun-Sam: 8h00-18h00 | Dim: 9h00-14h00</span>
+                        </div>
+                    </div>
+                    <div class="map-placeholder">
+                        [Carte Google Maps - Les Cayes]
+                    </div>
+                </div>
+                
+                <!-- Cap-Haïtien Location -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-icon">🏪</div>
+                        <h3>Michel Cell - Cap-Haïtien</h3>
+                    </div>
+                    <div class="location-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>45 Boulevard du Cap, Cap-Haïtien, Haïti</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <span>+509 38 76 54 32</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">✉️</span>
+                            <span>cap@michelcell.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>Lun-Sam: 8h00-19h00 | Dim: 9h00-15h00</span>
+                        </div>
+                    </div>
+                    <div class="map-placeholder">
+                        [Carte Google Maps - Cap-Haïtien]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="contact-form">
+        <div class="container">
+            <div class="section-title">
+                <h2>Envoyez-nous un message</h2>
+            </div>
+            <div class="contact-form-container">
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Prénom</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Nom</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Boutique concernée</label>
+                        <select id="location" name="location">
+                            <option value="">Sélectionnez une boutique</option>
+                            <option value="cayes">Les Cayes</option>
+                            <option value="cap">Cap-Haïtien</option>
+                            <option value="both">Les deux boutiques</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <select id="subject" name="subject">
+                            <option value="">Sélectionnez un sujet</option>
+                            <option value="achat">Achat de produit</option>
+                            <option value="reparation">Service de réparation</option>
+                            <option value="reprise">Reprise d'ancien mobile</option>
+                            <option value="support">Support technique</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Décrivez votre demande en détail..." required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Questions fréquentes</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">Quels sont vos modes de paiement acceptés ?</div>
+                    <div class="faq-answer">Nous acceptons le cash, les cartes de débit, les virements et le paiement en 4x sans frais sur présentation de pièces.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Proposez-vous la livraison ?</div>
+                    <div class="faq-answer">Oui, nous offrons la livraison gratuite à partir de 10 000 HTG dans un rayon de 10km autour de nos boutiques.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Combien de temps dure une réparation ?</div>
+                    <div class="faq-answer">La plupart des réparations (écran, batterie) sont effectuées en moins d'1h. Les réparations complexes peuvent prendre 24-48h.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Avez-vous une garantie sur les réparations ?</div>
+                    <div class="faq-answer">Oui, toutes nos réparations sont garanties 3 mois. Les produits neufs bénéficient de la garantie constructeur étendue à 2 ans.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Colonne 1 -->
+                <div class="footer-column">
+                    <h4>Michel Cell</h4>
+                    <p>Votre partenaire numérique de confiance depuis 2010.</p>
+                </div>
+                
+                <!-- Colonne 2 -->
+                <div class="footer-column">
+                    <h4>Boutiques</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Les Cayes</a></li>
+                        <li><a href="#">Cap-Haïtien</a></li>
+                        <li><a href="#">Heures d'ouverture</a></li>
+                        <li><a href="#">Directions</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Colonne 3 -->
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Réparations</a></li>
+                        <li><a href="#">Reprise</a></li>
+                        <li><a href="#">Conseils</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Colonne 4 -->
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li>📞 Cayes: +509 36 98 45 67</li>
+                        <li>📞 Cap: +509 38 76 54 32</li>
+                        <li>✉️ contact@michelcell.com</li>
+                        <li>🔗 Facebook / Instagram</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Michel Cell. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script pour le formulaire de contact
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupération des données du formulaire
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulation d'envoi (à remplacer par votre logique d'envoi réelle)
+            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

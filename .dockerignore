@@ -1,0 +1,15 @@
+# .dockerignore file
+node_modules
+npm-debug.log
+build
+.git
+.gitignore
+README.md
+.env
+.env.local
+.DS_Store
+.eslintcache
+coverage
+dist
+.next
+out
