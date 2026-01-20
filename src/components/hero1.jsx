@@ -34,7 +34,7 @@ export default function Hero1() {
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
           <Link
             to="/products"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Découvrir la collection
           </Link>

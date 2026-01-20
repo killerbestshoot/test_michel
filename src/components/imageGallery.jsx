@@ -1,56 +1,65 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const ImageGallerySection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [direction, setDirection] = useState('left');
+  const [direction, setDirection] = useState("left");
 
   const images = [
     {
       src: "/images/storefront_michel_cell.jpg",
       alt: "Michel Cell Storefront",
-      caption: "Notre boutique principale"
+      caption: "Notre boutique principale",
     },
     {
       src: "/images/store-interior-1.jpg",
       alt: "Intérieur de la boutique",
-      caption: "Espace d'exposition moderne"
+      caption: "Espace d'exposition moderne",
     },
     {
       src: "/images/our_last_smartphone.jpg",
       alt: "Display de produits",
-      caption: "Nos derniers smartphones"
+      caption: "Nos derniers smartphones",
     },
     {
       src: "/images/customer-service.jpg",
       alt: "Service client",
-      caption: "Accompagnement personnalisé"
+      caption: "Accompagnement personnalisé",
     },
     {
       src: "/images/repair-station.jpg",
       alt: "Station de réparation",
-      caption: "Atelier technique expert"
+      caption: "Atelier technique expert",
     },
     {
       src: "/images/gaming_space_vr.jpg",
       alt: "Espace gaming",
-      caption: "Zone dédiée aux gamers"
+      caption: "Zone dédiée aux gamers",
     },
     {
       src: "/images/accessories-wall.jpg",
       alt: "Mur d'accessoires",
-      caption: "Large choix d'accessoires"
+      caption: "Large choix d'accessoires",
     },
     {
       src: "/images/team-photo.jpg",
       alt: "Équipe Michel Cell",
-      caption: "Notre équipe d'experts"
-    }
+      caption: "Notre équipe d'experts",
+    },
   ];
 
   const directions = [
-    'left', 'right', 'top', 'bottom', 
-    'top-left', 'top-right', 'bottom-left', 'bottom-right',
-    'zoom-in', 'zoom-out', 'rotate-left', 'rotate-right'
+    "left",
+    "right",
+    "top",
+    "bottom",
+    "top-left",
+    "top-right",
+    "bottom-left",
+    "bottom-right",
+    "zoom-in",
+    "zoom-out",
+    "rotate-left",
+    "rotate-right",
   ];
 
   const getRandomDirection = () => {
@@ -69,32 +78,33 @@ const ImageGallerySection = () => {
   }, [images.length]);
 
   const getAnimationClass = (dir) => {
-    const baseClass = "w-full h-full object-cover rounded-lg shadow-2xl transition-all duration-1000 ease-in-out";
-    
+    const baseClass =
+      "w-full h-full object-cover transition-all duration-1000 ease-in-out";
+
     switch (dir) {
-      case 'left':
+      case "left":
         return `${baseClass} animate-slide-in-left`;
-      case 'right':
+      case "right":
         return `${baseClass} animate-slide-in-right`;
-      case 'top':
+      case "top":
         return `${baseClass} animate-slide-in-top`;
-      case 'bottom':
+      case "bottom":
         return `${baseClass} animate-slide-in-bottom`;
-      case 'top-left':
+      case "top-left":
         return `${baseClass} animate-slide-in-top-left`;
-      case 'top-right':
+      case "top-right":
         return `${baseClass} animate-slide-in-top-right`;
-      case 'bottom-left':
+      case "bottom-left":
         return `${baseClass} animate-slide-in-bottom-left`;
-      case 'bottom-right':
+      case "bottom-right":
         return `${baseClass} animate-slide-in-bottom-right`;
-      case 'zoom-in':
+      case "zoom-in":
         return `${baseClass} animate-zoom-in`;
-      case 'zoom-out':
+      case "zoom-out":
         return `${baseClass} animate-zoom-out`;
-      case 'rotate-left':
+      case "rotate-left":
         return `${baseClass} animate-rotate-left`;
-      case 'rotate-right':
+      case "rotate-right":
         return `${baseClass} animate-rotate-right`;
       default:
         return `${baseClass} animate-fade-in`;
@@ -102,92 +112,125 @@ const ImageGallerySection = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-900 to-black h-screen flex items-center justify-center overflow-hidden relative">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Image de fond pleine page */}
+      <div className="absolute inset-0">
+        <img
+          src={images[currentImageIndex].src}
+          alt={images[currentImageIndex].alt}
+          className={getAnimationClass(direction)}
+        />
+
+        {/* Overlay sombre pour améliorer la lisibilité */}
+        <div className="absolute inset-0 bg-black/30"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Image Container */}
-          <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 p-4">
-            <img
-              src={images[currentImageIndex].src}
-              alt={images[currentImageIndex].alt}
-              className={getAnimationClass(direction)}
-            />
-            
-            {/* Caption Overlay */}
-            <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-4 transform transition-all duration-500 ease-in-out">
-              <p className="font-mono text-white text-lg text-center">
+      {/* Contenu superposé */}
+      <div className="relative z-10 h-full w-full flex flex-col">
+        {/* Légende en haut */}
+        <div className="pt-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/20 transform transition-all duration-500 ease-in-out">
+              <p className="font-mono text-white text-xl md:text-2xl lg:text-3xl text-center">
                 {images[currentImageIndex].caption}
               </p>
             </div>
+          </div>
+        </div>
 
-            {/* Navigation Dots */}
-            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setCurrentImageIndex(index);
-                    setDirection(getRandomDirection());
-                  }}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentImageIndex
-                      ? 'bg-blue-500 scale-125'
-                      : 'bg-white/50 hover:bg-white/70'
-                  }`}
-                  aria-label={`Aller à l'image ${index + 1}`}
-                />
-              ))}
+        {/* Espace central vide pour maximiser la vue de l'image */}
+        <div className="flex-grow flex items-center justify-center">
+          {/* Navigation Arrows */}
+          <button
+            onClick={() => {
+              setCurrentImageIndex(
+                (prev) => (prev - 1 + images.length) % images.length,
+              );
+              setDirection(getRandomDirection());
+            }}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/40 backdrop-blur-sm hover:bg-black/60 border border-white/30 rounded-full p-3 md:p-4 transition-all duration-300 hover:scale-110 hover:border-red-400 text-white"
+            aria-label="Image précédente"
+          >
+            <svg
+              className="w-6 h-6 md:w-8 md:h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => {
+              setCurrentImageIndex((prev) => (prev + 1) % images.length);
+              setDirection(getRandomDirection());
+            }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/40 backdrop-blur-sm hover:bg-black/60 border border-white/30 rounded-full p-3 md:p-4 transition-all duration-300 hover:scale-110 hover:border-red-400 text-white"
+            aria-label="Image suivante"
+          >
+            <svg
+              className="w-6 h-6 md:w-8 md:h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Conteneur pour les contrôles en bas */}
+        <div className="pb-8 md:pb-12 px-4">
+          <div className="max-w-4xl mx-auto space-y-4">
+            {/* Progress Bar */}
+            <div className="bg-white/20 rounded-full h-2 md:h-3 overflow-hidden w-full">
+              <div
+                className="bg-red-500 h-full rounded-full transition-all duration-1000 ease-linear"
+                style={{
+                  width: `${((currentImageIndex + 1) / images.length) * 100}%`,
+                }}
+              />
             </div>
 
-            {/* Navigation Arrows */}
-            <button
-              onClick={() => {
-                setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-                setDirection(getRandomDirection());
-              }}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110 text-white"
-              aria-label="Image précédente"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
+            {/* Navigation Dots et Counter */}
+            <div className="flex items-center justify-between">
+              {/* Navigation Dots */}
+              <div className="flex gap-2 md:gap-3">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentImageIndex(index);
+                      setDirection(getRandomDirection());
+                    }}
+                    className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex
+                        ? "bg-red-500 scale-125"
+                        : "bg-white/60 hover:bg-red-400"
+                    }`}
+                    aria-label={`Aller à l'image ${index + 1}`}
+                  />
+                ))}
+              </div>
 
-            <button
-              onClick={() => {
-                setCurrentImageIndex((prev) => (prev + 1) % images.length);
-                setDirection(getRandomDirection());
-              }}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110 text-white"
-              aria-label="Image suivante"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="mt-6 bg-white/10 rounded-full h-2 overflow-hidden">
-            <div 
-              className="bg-blue-500 h-full rounded-full transition-all duration-1000 ease-linear"
-              style={{
-                width: `${((currentImageIndex + 1) / images.length) * 100}%`
-              }}
-            />
-          </div>
-
-          {/* Image Counter */}
-          <div className="text-center mt-4">
-            <span className="font-mono text-gray-300 text-sm">
-              {currentImageIndex + 1} / {images.length}
-            </span>
+              {/* Image Counter */}
+              <div className="text-center">
+                <span className="font-mono text-white text-sm md:text-base bg-black/40 px-3 md:px-4 py-1 md:py-2 rounded-full">
+                  {currentImageIndex + 1} / {images.length}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -329,9 +372,11 @@ const ImageGallerySection = () => {
         @keyframes fade-in {
           from {
             opacity: 0;
+            transform: scale(1);
           }
           to {
             opacity: 1;
+            transform: scale(1);
           }
         }
 

@@ -24,13 +24,14 @@ const BrandsSection = ({ lang: propLang }) => {
       setLang(propLang);
     }
   }, [propLang]);
+  
   const brands = [
     // Première ligne (gauche -> droite)
-    ['iPhone', 'Samsung', 'Google', 'Xiaomi', 'OnePlus', 'Huawei', 'Motorola', 'Redmi'],
+    ['iPhone', 'Samsung', 'Google', 'Xiaomi', 'OnePlus', 'Huawei', 'Motorola', 'Redmi', 'Oppo', 'Sony', 'Nokia', 'Asus', 'Dell', 'Acer'],
     // Deuxième ligne (droite -> gauche)
-    ['ZTE', 'TCL', 'Tecno', 'Google Pixel', 'Lenovo', 'HP', 'JBL', 'Amazon'],
+    ['ZTE', 'TCL', 'Tecno', 'Google Pixel', 'Lenovo', 'HP', 'JBL', 'Amazon', 'Microsoft', 'LG', 'HTC', 'Vivo', 'Realme', 'Honor'],
     // Troisième ligne (gauche -> droite)
-    ['Apple Watch', 'Galaxy Watch', 'Starlink', 'PS4', 'PS5', 'AirPods', 'Backup', 'Router']
+    ['Apple Watch', 'Galaxy Watch', 'Starlink', 'PS4', 'PS5', 'AirPods', 'Backup', 'Router', 'Smart Home', 'Fitness Tracker', 'Drone', 'VR Headset', 'Smart TV', 'E-Reader'],
   ];
 
   const [isVisible, setIsVisible] = useState(false);
@@ -58,15 +59,15 @@ const BrandsSection = ({ lang: propLang }) => {
   }, []);
 
   return (
-    <section id="brands-section" className="py-16 bg-gradient-to-b from-gray-900 to-black overflow-hidden   font-inter" >
+    <section id="brands-section" className="py-16 bg-gradient-to-b from-red-950 via-red-900 to-red-950 overflow-hidden font-inter">
       <div className="container mx-auto px-4">
         {/* Titre */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             { lang === 'fr' ? 'Toutes les marques, un seul expert ' : 'All Brands, One Expert' }
-            {' '}<span className="text-blue-400">MichelCell</span>
+            {' '}<span className="text-red-300">MichelCell</span>
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-red-100 text-lg max-w-2xl mx-auto">
             { lang === 'fr' ? 'Découvrez notre vaste sélection de marques de confiance, soigneusement choisies pour vous offrir le meilleur en matière de technologie et de performance.' : 'Discover our vast selection of trusted brands, carefully chosen to offer you the best in technology and performance.' }
           </p>
         </div>
@@ -78,7 +79,7 @@ const BrandsSection = ({ lang: propLang }) => {
             {[...brands[0], ...brands[0]].map((brand, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/30 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-red-200"
               >
                 <span className="text-white font-semibold text-lg whitespace-nowrap">
                   {brand}
@@ -92,7 +93,7 @@ const BrandsSection = ({ lang: propLang }) => {
             {[...brands[1], ...brands[1]].map((brand, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/30 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-red-200"
               >
                 <span className="text-white font-semibold text-lg whitespace-nowrap">
                   {brand}
@@ -106,7 +107,7 @@ const BrandsSection = ({ lang: propLang }) => {
             {[...brands[2], ...brands[2]].map((brand, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/30 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-red-200"
               >
                 <span className="text-white font-semibold text-lg whitespace-nowrap">
                   {brand}
@@ -118,23 +119,23 @@ const BrandsSection = ({ lang: propLang }) => {
 
         {/* Stats ou informations supplémentaires */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-white/10">
-            <div className="text-3xl font-bold text-blue-400 mb-2">50+</div>
-            <div className="text-gray-300">
+          <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
+            <div className="text-3xl font-bold text-red-200 mb-2">50+</div>
+            <div className="text-red-100">
               {lang === 'fr' ? 'Marques disponibles' : 'Available Brands'}
-              </div>
+            </div>
           </div>
-          <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-white/10">
-            <div className="text-3xl font-bold text-blue-400 mb-2">1000+</div>
-            <div className="text-gray-300">
+          <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
+            <div className="text-3xl font-bold text-red-200 mb-2">1000+</div>
+            <div className="text-red-100">
               {lang === 'fr' ? 'Produits en stock' : 'Products in Stock'}
             </div>
           </div>
-          <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-white/10">
-            <div className="text-3xl font-bold text-blue-400 mb-2">
-              { lang === 'fr' ? 'Extpert' : 'Expert' }
+          <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
+            <div className="text-3xl font-bold text-red-200 mb-2">
+              { lang === 'fr' ? 'Expert' : 'Expert' }
             </div>
-            <div className="text-gray-300">
+            <div className="text-red-100">
               {lang === 'fr' ? 'Accompagnement personnalisé' : 'Personalized Support'}
             </div>
           </div>

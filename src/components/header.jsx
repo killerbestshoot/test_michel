@@ -64,7 +64,7 @@ const Header = () => {
             <li>
               <Link
                 to="/"
-                className="relative text-lg font-semibold hover:text-blue-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-blue-300 after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-lg font-semibold hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
                 Accueil
               </Link>
@@ -72,7 +72,7 @@ const Header = () => {
             <li>
               <Link
                 to="/products"
-                className="relative text-lg hover:text-blue-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-blue-300 after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-lg hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
                 Smartphones
               </Link>
@@ -80,7 +80,7 @@ const Header = () => {
             <li>
               <Link
                 to="/accessories"
-                className="relative text-lg hover:text-blue-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-blue-300 after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-lg hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
                 Accessoires
               </Link>
@@ -88,7 +88,7 @@ const Header = () => {
             <li>
               <Link
                 to="/about"
-                className="relative text-lg hover:text-blue-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-blue-300 after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-lg hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
                 À propos
               </Link>
@@ -96,7 +96,7 @@ const Header = () => {
             <li>
               <Link
                 to="/contact"
-                className="relative text-lg hover:text-blue-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-blue-300 after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-lg hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
                 Contact
               </Link>
@@ -106,17 +106,17 @@ const Header = () => {
           {/* Actions Desktop */}
           <div className="hidden lg:flex items-center space-x-6">
             <button 
-              className="text-white hover:text-blue-200 hover:scale-110 transition-transform duration-300 text-xl"
+              className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl"
               aria-label="Recherche"
             >
               🔍
             </button>
             <button 
-              className="text-white hover:text-blue-200 hover:scale-110 transition-transform duration-300 text-xl relative"
+              className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl relative"
               aria-label="Panier"
             >
               🛒
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
             </button>
@@ -125,14 +125,14 @@ const Header = () => {
           {/* Menu Hamburger Mobile */}
           <div className="lg:hidden flex items-center space-x-4">
             <button 
-              className="text-white hover:text-blue-200 hover:scale-110 transition-transform duration-300 text-xl"
+              className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl"
               aria-label="Panier"
             >
               🛒
             </button>
             <button 
               ref={hamburgerBtnRef}
-              className={`text-white hover:text-blue-200 transition-transform duration-300 text-xl ${
+              className={`text-white hover:text-red-200 transition-transform duration-300 text-xl ${
                 isMenuOpen ? 'rotate-90' : ''
               }`}
               onClick={toggleMenu}
@@ -159,7 +159,7 @@ const Header = () => {
             <li>
               <Link
                 to="/"
-                className="block text-white text-lg font-semibold hover:text-blue-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
+                className="block text-white text-lg font-semibold hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
                 Accueil
@@ -168,7 +168,7 @@ const Header = () => {
             <li>
               <Link
                 to="/products"
-                className="block text-white text-lg hover:text-blue-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
+                className="block text-white text-lg hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
                 Smartphones
@@ -177,7 +177,7 @@ const Header = () => {
             <li>
               <Link
                 to="/accessories"
-                className="block text-white text-lg hover:text-blue-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
+                className="block text-white text-lg hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
                 Accessoires
@@ -186,7 +186,7 @@ const Header = () => {
             <li>
               <Link
                 to="/about"
-                className="block text-white text-lg hover:text-blue-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
+                className="block text-white text-lg hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
                 À propos
@@ -195,7 +195,7 @@ const Header = () => {
             <li>
               <Link
                 to="/contact"
-                className="block text-white text-lg hover:text-blue-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
+                className="block text-white text-lg hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
                 Contact
@@ -204,17 +204,17 @@ const Header = () => {
             <li className="pt-4 border-t border-white/20">
               <div className="flex space-x-6 py-2 px-4 justify-center">
                 <button 
-                  className="text-white hover:text-blue-200 hover:scale-110 transition-transform duration-300 text-xl"
+                  className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl"
                   aria-label="Recherche"
                 >
                   🔍
                 </button>
                 <button 
-                  className="text-white hover:text-blue-200 hover:scale-110 transition-transform duration-300 text-xl relative"
+                  className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl relative"
                   aria-label="Panier"
                 >
                   🛒
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     0
                   </span>
                 </button>

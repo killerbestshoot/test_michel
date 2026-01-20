@@ -1,6 +1,7 @@
 {
   "short_name": "Michel Cell",
-  "name": "Michel Cell",
+  "name": "Michel Cell - Boutique High-Tech Haïtienne",
+  "description": "Boutique spécialisée en téléphonie, accessoires et réparations en Haïti. Technologie de qualité au service des Haïtiens.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +11,29 @@
     {
       "src": "michell_cell_meta_logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "michell_cell_meta_logo.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "scope": "/",
+  "theme_color": "#7f1d1d",
+  "background_color": "#000000",
+  "orientation": "portrait",
+  "categories": [
+    "shopping",
+    "technology",
+    "electronics"
+  ],
+  "lang": "fr-HT",
+  "dir": "ltr",
+  "related_applications": [],
+  "prefer_related_applications": false
 }

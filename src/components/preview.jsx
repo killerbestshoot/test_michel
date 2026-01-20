@@ -165,11 +165,11 @@ const [lang, setLang] = useState('fr');
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden font-inter">
+    <section className="py-20 bg-gradient-to-b from-red-900 to-red-950 relative overflow-hidden font-inter">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-red-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-red-600 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -178,7 +178,7 @@ const [lang, setLang] = useState('fr');
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             { lang === 'fr' ? 'Nos Produits Phares' : 'Featured Products' }
           </h2>
-          <p className="text-gray-300 text-xl max-w-2xl mx-auto">
+          <p className="text-red-100 text-xl max-w-2xl mx-auto">
             { lang === 'fr' ? 'Découvrez notre sélection exclusive de produits high-tech aux meilleurs prix.' : 'Explore our exclusive selection of high-tech products at the best prices.' }
           </p>
         </div>
@@ -188,7 +188,7 @@ const [lang, setLang] = useState('fr');
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute -left-14 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110"
+            className="absolute -left-14 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 rounded-full p-3 transition-all duration-300 hover:scale-110 hover:border-red-200"
             aria-label="Slide précédent"
           >
             <svg
@@ -208,7 +208,7 @@ const [lang, setLang] = useState('fr');
 
           <button
             onClick={nextSlide}
-            className="absolute -right-14 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110"
+            className="absolute -right-14 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 rounded-full p-3 transition-all duration-300 hover:scale-110 hover:border-red-200"
             aria-label="Slide suivant"
           >
             <svg
@@ -231,7 +231,7 @@ const [lang, setLang] = useState('fr');
             {getVisibleProducts().map((product) => (
               <div
                 key={product.id}
-                className="group relative bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 p-6 transition-all duration-500 hover:bg-white/10 hover:border-white/20 hover:scale-105 hover:shadow-2xl"
+                className="group relative bg-white/10 backdrop-blur-lg rounded-3xl border border-white/30 p-6 transition-all duration-500 hover:bg-white/15 hover:border-red-200 hover:scale-105 hover:shadow-2xl"
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
@@ -240,12 +240,12 @@ const [lang, setLang] = useState('fr');
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold ${
                       product.badge === "Nouveau"
-                        ? "bg-green-500 text-white"
-                        : product.badge === "Promo"
                         ? "bg-red-500 text-white"
+                        : product.badge === "Promo"
+                        ? "bg-red-600 text-white"
                         : product.badge === "Best-seller"
-                        ? "bg-orange-500 text-white"
-                        : "bg-blue-500 text-white"
+                        ? "bg-red-700 text-white"
+                        : "bg-red-400 text-white"
                     }`}
                   >
                     {product.badge}
@@ -275,10 +275,10 @@ const [lang, setLang] = useState('fr');
                 <div className="space-y-3">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-white group-hover:text-red-300 transition-colors duration-300">
                         {product.name}
                       </h3>
-                      <p className="text-gray-400 text-sm">
+                      <p className="text-red-300/70 text-sm">
                         {product.category}
                       </p>
                     </div>
@@ -286,7 +286,7 @@ const [lang, setLang] = useState('fr');
                       <div className="text-2xl font-bold text-white">
                         {product.price}
                       </div>
-                      <div className="text-gray-500 line-through text-sm">
+                      <div className="text-red-300/50 line-through text-sm">
                         {product.originalPrice}
                       </div>
                     </div>
@@ -295,7 +295,7 @@ const [lang, setLang] = useState('fr');
                   {/* Rating */}
                   <div className="flex items-center gap-2">
                     <div className="flex">{renderStars(product.rating)}</div>
-                    <span className="text-gray-400 text-sm">
+                    <span className="text-red-300/70 text-sm">
                       ({product.rating})
                     </span>
                   </div>
@@ -312,9 +312,9 @@ const [lang, setLang] = useState('fr');
                       {product.features.map((feature, index) => (
                         <li
                           key={index}
-                          className="text-gray-300 text-sm flex items-center gap-2"
+                          className="text-red-100 text-sm flex items-center gap-2"
                         >
-                          <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                          <span className="w-1.5 h-1.5 bg-red-400 rounded-full"></span>
                           {feature}
                         </li>
                       ))}
@@ -329,15 +329,14 @@ const [lang, setLang] = useState('fr');
                         : "opacity-0 translate-y-4"
                     }`}
                   >
-                    <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <button className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                       { lang === 'fr' ? 'Voir les détails' : 'View Details' }
-{/* -                      Voir les détails --- IGNORE --- */}
                     </button>
                   </div>
 
                   {/* Quick Actions */}
-                  <div className="flex justify-between items-center pt-4 border-t border-white/10">
-                    <button className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-5">
+                  <div className="flex justify-between items-center pt-4 border-t border-white/20">
+                    <button className="text-red-300/70 hover:text-red-200 transition-colors duration-300 flex items-center gap-5">
                       <svg
                         className="w-5 h-5"
                         fill="none"
@@ -353,7 +352,7 @@ const [lang, setLang] = useState('fr');
                       </svg>
                       { lang === 'fr' ? 'Ajouter aux favoris' : 'Add to Favorites' }
                     </button>
-                    <button className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2">
+                    <button className="text-red-300/70 hover:text-red-200 transition-colors duration-300 flex items-center gap-2">
                       <svg
                         className="w-5 h-5"
                         fill="none"
@@ -383,8 +382,8 @@ const [lang, setLang] = useState('fr');
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentSlide
-                    ? "bg-blue-500 scale-125"
-                    : "bg-white/30 hover:bg-white/50"
+                    ? "bg-red-500 scale-125"
+                    : "bg-white/30 hover:bg-red-400"
                 }`}
                 aria-label={`Aller au slide ${index + 1}`}
               />
@@ -394,7 +393,7 @@ const [lang, setLang] = useState('fr');
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <button className="bg-transparent hover:bg-white/10 border-2 border-white/20 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:border-white/40 backdrop-blur-sm">
+          <button className="bg-transparent hover:bg-white/10 border-2 border-white/30 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:border-red-200 backdrop-blur-sm">
             <a href="/products" className="flex items-center gap-3">
               { lang === 'fr' ? 'Voir tous les produits' : 'View All Products' }
             </a>
