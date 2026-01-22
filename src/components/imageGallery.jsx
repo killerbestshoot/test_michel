@@ -13,7 +13,7 @@ const ImageGallerySection = () => {
       caption: t('imgStorefront'),
     },
     {
-      src: "/images/store-interior-1.jpg",
+      src: "/images/exib2.jpg",
       alt: t('imgInterior'),
       caption: t('imgInterior'),
     },
@@ -23,12 +23,12 @@ const ImageGallerySection = () => {
       caption: t('imgSmartphone'),
     },
     {
-      src: "/images/customer-service.jpg",
+      src: "/images/care_cus.jpg",
       alt: t('imgService'),
       caption: t('imgService'),
     },
     {
-      src: "/images/repair-station.jpg",
+      src: "/images/work.jpg",
       alt: t('imgRepair'),
       caption: t('imgRepair'),
     },
@@ -38,12 +38,12 @@ const ImageGallerySection = () => {
       caption: t('imgGaming'),
     },
     {
-      src: "/images/accessories-wall.jpg",
+      src: "/images/accessories.jpg",
       alt: t('imgAccessories'),
       caption: t('imgAccessories'),
     },
     {
-      src: "/images/team-photo.jpg",
+      src: "/images/tech_team.jpg",
       alt: t('imgTeam'),
       caption: t('imgTeam'),
     },

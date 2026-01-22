@@ -303,7 +303,7 @@ export default function Products() {
                 <div className="flex items-center gap-2">
                   <div className="flex">{renderStars(product.rating)}</div>
                   <span className="font-mono text-red-300/70 text-sm">
-                    ({product.rating}) • {product.reviews} avis
+                    ({product.rating}) • {product.reviews} {t('reviews')}
                   </span>
                 </div>
 

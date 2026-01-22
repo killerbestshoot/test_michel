@@ -802,6 +802,32 @@ export const translations = {
     addToFavorites: "Add to Favorites",
     compare: "Compare",
     viewAllProducts: "View All Products",
+    
+    // Products Page
+    productsHeroTitle: "Our Collection",
+    productsHeroDesc: "Discover our premium selection of high‑tech products, carefully chosen for their exceptional quality and performance.",
+    sortLabel: "Sort by:",
+    sortName: "Name",
+    sortPriceAsc: "Price low to high",
+    sortPriceDesc: "Price high to low",
+    sortRating: "Top rated",
+    catAll: "All products",
+    catTablets: "Tablets",
+    catSmartphones: "Smartphones",
+    catLaptops: "Laptops",
+    catGaming: "Gaming",
+    stockLabel: "in stock",
+    featuresLabel: "features",
+    viewButton: "View",
+    loadMore: "Load more products",
+    statAvailable: "Available products",
+    statRating: "Average rating",
+    statDelivery: "Express delivery",
+    
+    // Additional Badges
+    badgePro: "Professional",
+    badgeUltimate: "Ultimate",
+    badgeVersatile: "Versatile",
 
     // Product Categories
     catSmartphone: "Smartphone",
