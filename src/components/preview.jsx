@@ -1,111 +1,89 @@
 import { useState, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
-const ProductsPreviewSection = ({ lang: propLang }) => {
-
-const [lang, setLang] = useState('fr');
-
-  // Cookie helper
-  const getCookie = (name) => {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for(let i=0;i < ca.length;i++) {
-      let c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-  };
-
-  useEffect(() => {
-    // Read language from cookie or use prop
-    const saved = getCookie('mc_lang');
-    if (saved === 'fr' || saved === 'en') {
-      setLang(saved);
-    } else if (propLang === 'fr' || propLang === 'en') {
-      setLang(propLang);
-    }
-  }, [propLang]);
+const ProductsPreviewSection = () => {
+  const { t } = useLanguage();
 
   const products = [
     {
       id: 1,
       name: "iPhone 15 Pro",
-      category: "Smartphone",
+      category: "catSmartphone",
       price: "**** htg",
       originalPrice: "*** htg",
       image: "/images/michel-cell-iphone-15.jpg",
       features: [
-        'Écran 6.1" Super Retina XDR',
-        "Chip A17 Pro",
-        "Camera 48MP",
-        "Titanium",
+        'featScreen61',
+        "featChipA17",
+        "featCam48",
+        "featTitanium",
       ],
-      badge: "Nouveau",
+      badge: "badgeNew",
       rating: 4.8,
     },
     {
       id: 2,
       name: "Samsung Galaxy S24",
-      category: "Smartphone",
+      category: "catSmartphone",
       price: "**** htg",
       originalPrice: "*** htg",
       image: "/images/gs24.jpg",
       features: [
-        'Écran 6.2" Dynamic AMOLED',
-        "Snapdragon 8 Gen 3",
-        "AI Integration",
-        "7 ans updates",
+        'featScreen62',
+        "featSnap8",
+        "featAI",
+        "feat7Updates",
       ],
-      badge: "IA Intégrée",
+      badge: "badgeAI",
       rating: 4.6,
     },
     {
       id: 3,
       name: "PS5 Slim",
-      category: "Console Gaming",
+      category: "catConsole",
       price: "**** htg",
       originalPrice: "*** htg",
       image: "/images/michel-cell-ps5.jpg",
-      features: ["1TB SSD", "4K 120Hz", "Ray Tracing", "DualSense"],
-      badge: "Promo",
+      features: ["feat1TB", "feat4K", "featRayTracing", "featDualSense"],
+      badge: "badgePromo",
       rating: 4.9,
     },
     {
       id: 4,
       name: "MacBook Air M3",
-      category: "Laptop",
+      category: "catLaptop",
       price: "**** htg",
       originalPrice: "*** htg",
       image: "/images/michel-cell-macbook_air-m4.jpg",
-      features: ["Chip M3", '15" Liquid Retina', "18h autonomie", "8GB RAM"],
-      badge: "Écologie",
+      features: ["featChipM3", 'featScreen15', "feat18h", "feat8GB"],
+      badge: "badgeEco",
       rating: 4.7,
     },
     {
       id: 5,
       name: "AirPods Pro 2",
-      category: "Accessoires",
+      category: "catAccessories",
       price: "**** htg",
       originalPrice: "*** htg",
       image: "/images/michel-cel-air-pods.jpg",
       features: [
-        "Annulation active bruit",
-        "Audio Spatial",
-        "MagSafe",
-        "30h batterie",
+        "featANC",
+        "featSpatial",
+        "featMagSafe",
+        "feat30h",
       ],
-      badge: "Best-seller",
+      badge: "badgeBestseller",
       rating: 4.8,
     },
     {
       id: 6,
       name: "Google Pixel 8",
-      category: "Smartphone",
+      category: "catSmartphone",
       price: "**** htg",
       originalPrice: "*** htg",
       image: "/images/michel-cell-google-pxl.jpg",
-      features: ["Android 14", "Camera 50MP", "7 ans updates", "Tensor G3"],
-      badge: "Android Pur",
+      features: ["featAndroid14", "featCam50", "feat7Updates", "featTensor"],
+      badge: "badgePure",
       rating: 4.5,
     },
   ];
@@ -176,10 +154,10 @@ const [lang, setLang] = useState('fr');
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            { lang === 'fr' ? 'Nos Produits Phares' : 'Featured Products' }
+            {t('featuredProductsTitle')}
           </h2>
           <p className="text-red-100 text-xl max-w-2xl mx-auto">
-            { lang === 'fr' ? 'Découvrez notre sélection exclusive de produits high-tech aux meilleurs prix.' : 'Explore our exclusive selection of high-tech products at the best prices.' }
+            {t('featuredProductsDesc')}
           </p>
         </div>
 
@@ -189,7 +167,7 @@ const [lang, setLang] = useState('fr');
           <button
             onClick={prevSlide}
             className="absolute -left-14 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 rounded-full p-3 transition-all duration-300 hover:scale-110 hover:border-red-200"
-            aria-label="Slide précédent"
+            aria-label={t('prevSlide')}
           >
             <svg
               className="w-6 h-6 text-white"
@@ -209,7 +187,7 @@ const [lang, setLang] = useState('fr');
           <button
             onClick={nextSlide}
             className="absolute -right-14 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 rounded-full p-3 transition-all duration-300 hover:scale-110 hover:border-red-200"
-            aria-label="Slide suivant"
+            aria-label={t('nextSlide')}
           >
             <svg
               className="w-6 h-6 text-white"
@@ -239,16 +217,16 @@ const [lang, setLang] = useState('fr');
                 <div className="absolute top-4 left-4 z-10">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      product.badge === "Nouveau"
+                      product.badge === "badgeNew"
                         ? "bg-red-500 text-white"
-                        : product.badge === "Promo"
+                        : product.badge === "badgePromo"
                         ? "bg-red-600 text-white"
-                        : product.badge === "Best-seller"
+                        : product.badge === "badgeBestseller"
                         ? "bg-red-700 text-white"
                         : "bg-red-400 text-white"
                     }`}
                   >
-                    {product.badge}
+                    {t(product.badge)}
                   </span>
                 </div>
 
@@ -279,7 +257,7 @@ const [lang, setLang] = useState('fr');
                         {product.name}
                       </h3>
                       <p className="text-red-300/70 text-sm">
-                        {product.category}
+                        {t(product.category)}
                       </p>
                     </div>
                     <div className="text-right">
@@ -315,7 +293,7 @@ const [lang, setLang] = useState('fr');
                           className="text-red-100 text-sm flex items-center gap-2"
                         >
                           <span className="w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                          {feature}
+                          {t(feature)}
                         </li>
                       ))}
                     </ul>
@@ -330,7 +308,7 @@ const [lang, setLang] = useState('fr');
                     }`}
                   >
                     <button className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
-                      { lang === 'fr' ? 'Voir les détails' : 'View Details' }
+                      {t('viewDetails')}
                     </button>
                   </div>
 
@@ -350,7 +328,7 @@ const [lang, setLang] = useState('fr');
                           d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                         />
                       </svg>
-                      { lang === 'fr' ? 'Ajouter aux favoris' : 'Add to Favorites' }
+                      {t('addToFavorites')}
                     </button>
                     <button className="text-red-300/70 hover:text-red-200 transition-colors duration-300 flex items-center gap-2">
                       <svg
@@ -366,7 +344,7 @@ const [lang, setLang] = useState('fr');
                           d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                         />
                       </svg>
-                      { lang === 'fr' ? 'Comparer' : 'Compare' }
+                      {t('compare')}
                     </button>
                   </div>
                 </div>
@@ -385,7 +363,7 @@ const [lang, setLang] = useState('fr');
                     ? "bg-red-500 scale-125"
                     : "bg-white/30 hover:bg-red-400"
                 }`}
-                aria-label={`Aller au slide ${index + 1}`}
+                aria-label={`${t('goToSlide')} ${index + 1}`}
               />
             ))}
           </div>
@@ -395,7 +373,7 @@ const [lang, setLang] = useState('fr');
         <div className="text-center mt-16">
           <button className="bg-transparent hover:bg-white/10 border-2 border-white/30 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:border-red-200 backdrop-blur-sm">
             <a href="/products" className="flex items-center gap-3">
-              { lang === 'fr' ? 'Voir tous les produits' : 'View All Products' }
+              {t('viewAllProducts')}
             </a>
           </button>
         </div>

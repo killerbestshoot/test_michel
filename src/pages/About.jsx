@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function About() {
+  const { t } = useLanguage();
   const [animatedValues, setAnimatedValues] = useState({
     experience: 0,
     customers: 0,
@@ -48,60 +50,56 @@ export default function About() {
   const values = [
     {
       icon: "🎯",
-      title: "Expertise Technique",
-      description:
-        "Nos techniciens sont certifiés et suivent des formations régulières pour maîtriser les dernières technologies.",
+      title: t('aboutValExpertise'),
+      description: t('aboutValExpertiseDesc'),
     },
     {
       icon: "🤝",
-      title: "Confiance & Transparence",
-      description:
-        "Nous établissons une relation de confiance avec nos clients grâce à une communication claire et transparente.",
+      title: t('aboutValTrust'),
+      description: t('aboutValTrustDesc'),
     },
     {
       icon: "⚡",
-      title: "Innovation Continue",
-      description:
-        "Nous restons à la pointe de l'innovation pour vous proposer les produits et services les plus avancés.",
+      title: t('aboutValInnovation'),
+      description: t('aboutValInnovationDesc'),
     },
     {
       icon: "❤️",
-      title: "Service Personnalisé",
-      description:
-        "Chaque client est unique. Nous adaptons nos conseils et solutions à vos besoins spécifiques.",
+      title: t('aboutValPersonalized'),
+      description: t('aboutValPersonalizedDesc'),
     },
   ];
 
   const milestones = [
     {
       year: 2017,
-      title: "Ouverture",
-      description: "Première boutique dans le sud d'Haïti",
+      title: t('mile2017'),
+      description: t('mile2017Desc'),
     },
     {
       year: 2019,
-      title: "Expansion",
-      description: "Ouverture de la deuxième boutique dans le nord",
+      title: t('mile2019'),
+      description: t('mile2019Desc'),
     },
     {
       year: 2020,
-      title: "Service Réparation",
-      description: "Lancement du service de réparation expert",
+      title: t('mile2020'),
+      description: t('mile2020Desc'),
     },
     {
       year: 2022,
-      title: "E-commerce",
-      description: "Mise en place de notre boutique en ligne",
+      title: t('mile2022'),
+      description: t('mile2022Desc'),
     },
     {
       year: 2023,
-      title: "Gaming Zone",
-      description: "Création d'un espace dédié aux gamers",
+      title: t('mile2023'),
+      description: t('mile2023Desc'),
     },
     {
       year: 2024,
-      title: "Innovation",
-      description: "Intégration de services de réalité augmentée",
+      title: t('mile2024'),
+      description: t('mile2024Desc'),
     },
   ];
 
@@ -111,11 +109,10 @@ export default function About() {
       <section className="relative py-16 bg-gradient-to-r from-red-900/30 to-red-800/30 border-b border-white/10">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-mono text-4xl md:text-5xl font-bold text-white mb-6">
-            Notre Histoire
+            {t('aboutHeroTitle')}
           </h1>
           <p className="font-mono text-red-100 text-xl max-w-3xl mx-auto leading-relaxed">
-            De passionnés de technologie à référence numérique en Haïti,
-            découvrez notre parcours, nos valeurs et notre mission.
+            {t('aboutHeroDesc')}
           </p>
         </div>
       </section>
@@ -126,51 +123,39 @@ export default function About() {
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="text-center mb-12">
               <h2 className="font-mono text-3xl font-bold text-white mb-6">
-                Qui sommes-nous ?
+                {t('aboutWhoTitle')}
               </h2>
               <p className="font-mono text-red-100 text-lg leading-relaxed">
-                Michel Cell est une entreprise haïtienne spécialisée dans la
-                technologie mobile, l'électronique et les services de
-                réparation. Nous nous sommes donné pour mission de rendre la
-                technologie accessible à tous en Haïti.
+                {t('aboutWhoDesc')}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-6">
                 <h3 className="font-mono text-xl font-bold text-red-300 mb-4">
-                  Notre Présence
+                  {t('aboutPresenceTitle')}
                 </h3>
                 <p className="font-mono text-red-100">
-                  Présents dans 4 villes à travers Haïti avec 4 magasins
-                  physiques, nous sommes implantés au plus près de nos clients.
-                  Notre réseau s'agrandit constamment pour mieux servir chaque
-                  région.
+                  {t('aboutPresenceDesc')}
                 </p>
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-6">
                 <h3 className="font-mono text-xl font-bold text-red-300 mb-4">
-                  Notre Mission
+                  {t('aboutMissionTitle')}
                 </h3>
                 <p className="font-mono text-red-100">
-                  Démocratiser l'accès à la technologie de qualité en Haïti en
-                  offrant des produits adaptés, des services de réparation
-                  fiables et des conseils experts à des prix accessibles.
+                  {t('aboutMissionDesc')}
                 </p>
               </div>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-8">
               <h3 className="font-mono text-2xl font-bold text-white mb-4 text-center">
-                Notre Engagement
+                {t('aboutCommitTitle')}
               </h3>
               <p className="font-mono text-red-100 text-center">
-                Chez Michel Cell, chaque client compte. Nous croyons en une
-                approche personnalisée où l'écoute, le respect et la
-                transparence sont au cœur de toutes nos interactions. Notre
-                équipe s'engage à vous offrir le meilleur service, qu'il
-                s'agisse d'un achat, d'une réparation ou d'un simple conseil.
+                {t('aboutCommitDesc')}
               </p>
             </div>
           </div>
@@ -185,25 +170,25 @@ export default function About() {
               <div className="text-4xl font-bold text-red-300 font-mono mb-2">
                 {animatedValues.experience}+
               </div>
-              <div className="font-mono text-red-100">Ans d'expérience</div>
+              <div className="font-mono text-red-100">{t('aboutStatsExp')}</div>
             </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/30 hover:border-red-200 transition-all duration-300">
               <div className="text-4xl font-bold text-red-400 font-mono mb-2">
                 {animatedValues.customers}+
               </div>
-              <div className="font-mono text-red-100">Clients satisfaits</div>
+              <div className="font-mono text-red-100">{t('aboutStatsCust')}</div>
             </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/30 hover:border-red-200 transition-all duration-300">
               <div className="text-4xl font-bold text-red-500 font-mono mb-2">
                 {animatedValues.products}+
               </div>
-              <div className="font-mono text-red-100">Produits disponibles</div>
+              <div className="font-mono text-red-100">{t('aboutStatsProd')}</div>
             </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/30 hover:border-red-200 transition-all duration-300">
               <div className="text-4xl font-bold text-red-600 font-mono mb-2">
                 {animatedValues.repairs}+
               </div>
-              <div className="font-mono text-red-100">Appareils réparés</div>
+              <div className="font-mono text-red-100">{t('aboutStatsRepair')}</div>
             </div>
           </div>
         </div>
@@ -213,7 +198,7 @@ export default function About() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-mono text-3xl font-bold text-white text-center mb-12">
-            Nos Valeurs
+            {t('valTitle')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
@@ -240,39 +225,36 @@ export default function About() {
       <section className="py-16 bg-white/5 border-y border-white/10">
         <div className="container mx-auto px-4">
           <h2 className="font-mono text-3xl font-bold text-white text-center mb-12">
-            Nos Services
+            {t('servicesTitle')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-6 text-center">
               <div className="text-3xl mb-4">📱</div>
               <h3 className="font-mono text-xl font-bold text-white mb-3">
-                Vente de Produits
+                {t('svcSalesTitle')}
               </h3>
               <p className="font-mono text-red-100 text-sm">
-                Smartphones, tablettes, accessoires et équipements électroniques
-                des meilleures marques à des prix compétitifs.
+                {t('svcSalesDesc')}
               </p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-6 text-center">
               <div className="text-3xl mb-4">🔧</div>
               <h3 className="font-mono text-xl font-bold text-white mb-3">
-                Service de Réparation
+                {t('svcRepairTitle')}
               </h3>
               <p className="font-mono text-red-100 text-sm">
-                Réparation rapide et fiable de tous types d'appareils
-                électroniques par nos techniciens certifiés.
+                {t('svcRepairDesc')}
               </p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-6 text-center">
               <div className="text-3xl mb-4">🎮</div>
               <h3 className="font-mono text-xl font-bold text-white mb-3">
-                Espace Gaming
+                {t('svcGamingTitle')}
               </h3>
               <p className="font-mono text-red-100 text-sm">
-                Produits et conseils spécialisés pour les gamers : consoles,
-                accessoires, équipements streaming et plus encore.
+                {t('svcGamingDesc')}
               </p>
             </div>
           </div>
@@ -283,7 +265,7 @@ export default function About() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-mono text-3xl font-bold text-white text-center mb-12">
-            Notre Parcours
+            {t('timelineTitle')}
           </h2>
           <div className="relative">
             {/* Timeline Line */}
@@ -324,25 +306,23 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-red-600/20 to-red-700/20 backdrop-blur-sm border border-white/30 rounded-3xl p-12 text-center">
             <h2 className="font-mono text-3xl font-bold text-white mb-6">
-              Prêt à Découvrir Nos Services ?
+              {t('ctaVisionTitle')}
             </h2>
             <p className="font-mono text-red-100 text-lg mb-8 max-w-2xl mx-auto">
-              Que vous ayez besoin d'un nouveau smartphone, de conseils
-              techniques ou d'une réparation, notre équipe est là pour vous
-              accompagner.
+              {t('ctaVisionDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/products"
                 className="font-mono bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg"
               >
-                Voir nos produits
+                {t('ctaDiscover')}
               </Link>
               <Link
                 to="/contact"
                 className="font-mono bg-transparent hover:bg-white/10 border-2 border-white/30 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:border-red-200"
               >
-                Nous contacter
+                {t('ctaAppointment')}
               </Link>
             </div>
           </div>

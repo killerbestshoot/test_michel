@@ -8,8 +8,10 @@ import {
   Truck,
   RefreshCw,
 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Accessories() {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState("name");
   const [showPrices, setShowPrices] = useState(false);
@@ -18,17 +20,17 @@ export default function Accessories() {
   const categories = [
     {
       id: "all",
-      name: "Tous les accessoires",
+      name: t('catAllAccessories'),
       count: 68,
       icon: "🛍️",
     },
-    { id: "audio", name: "Audio", count: 18, icon: "🎧" },
-    { id: "protection", name: "Protection", count: 12, icon: "🛡️" },
-    { id: "charging", name: "Chargement", count: 15, icon: "⚡" },
-    { id: "smartwatch", name: "Montres connectées", count: 10, icon: "⌚" },
-    { id: "gaming", name: "Gaming", count: 8, icon: "🎮" },
-    { id: "photo", name: "Photo & Vidéo", count: 7, icon: "📸" },
-    { id: "smart-home", name: "Maison connectée", count: 5, icon: "🏠" },
+    { id: "audio", name: t('catAudio'), count: 18, icon: "🎧" },
+    { id: "protection", name: t('catProtection'), count: 12, icon: "🛡️" },
+    { id: "charging", name: t('catCharging'), count: 15, icon: "⚡" },
+    { id: "smartwatch", name: t('catSmartwatch'), count: 10, icon: "⌚" },
+    { id: "gaming", name: t('catPhotoVideo'), count: 8, icon: "🎮" },
+    { id: "photo", name: t('catPhotoVideo'), count: 7, icon: "📸" },
+    { id: "smart-home", name: t('catSmartHome'), count: 5, icon: "🏠" },
   ];
 
   const accessories = [
@@ -42,17 +44,17 @@ export default function Accessories() {
       image: "/images/airpods-pro2.jpg",
       brand: "Apple",
       features: [
-        "Annulation active bruit",
-        "Audio Spatial",
-        "MagSafe",
-        "30h batterie",
+        t('featANCActive'),
+        t('featSpatial'),
+        t('featMagSafe'),
+        t('feat30h'),
       ],
       rating: 4.8,
       reviews: 156,
-      badge: "Best-seller",
+      badge: 'badgeBestseller',
       stock: 25,
       compatibility: ["iPhone", "iPad", "Mac"],
-      color: "Blanc",
+      color: t('colorWhite'),
     },
     {
       id: 2,
@@ -63,17 +65,17 @@ export default function Accessories() {
       image: "/images/jbl-flip6.jpg",
       brand: "JBL",
       features: [
-        "Son puissant 30W",
-        "Résistance IP67",
-        "12h batterie",
-        "PartyBoost",
+        t('featSound30W'),
+        t('featIP67'),
+        t('feat12h'),
+        t('featPartyBoost'),
       ],
       rating: 4.7,
       reviews: 134,
-      badge: "Waterproof",
+      badge: 'badgeWaterproof',
       stock: 15,
       compatibility: ["Bluetooth Universel"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
     {
       id: 3,
@@ -83,13 +85,13 @@ export default function Accessories() {
       originalPrice: "****",
       image: "/images/sony-xm5.jpg",
       brand: "Sony",
-      features: ["ANC Pro", "30h batterie", "Hi-Res Audio", "Assistant vocal"],
+      features: [t('featANCPro'), t('feat30h'), t('featHiRes'), t('featVoiceAssist')],
       rating: 4.9,
       reviews: 234,
-      badge: "Top Qualité",
+      badge: 'badgeTopQuality',
       stock: 8,
       compatibility: ["Bluetooth", "NFC"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
     {
       id: 4,
@@ -100,17 +102,17 @@ export default function Accessories() {
       image: "/images/beats-studio-pro.jpg",
       brand: "Beats",
       features: [
-        "ANC Active",
-        "Spatial Audio",
-        "40h batterie",
-        "Apple/Android",
+        t('featANCActive'),
+        t('featSpatial'),
+        t('featBatt40h'),
+        t('featAppleAndroid'),
       ],
       rating: 4.6,
       reviews: 89,
-      badge: "Nouveau",
+      badge: 'badgeNew',
       stock: 12,
       compatibility: ["iOS", "Android"],
-      color: "Bleu",
+      color: t('colorBlue'),
     },
 
     // Protection
@@ -123,17 +125,17 @@ export default function Accessories() {
       image: "/images/coque-iphone15.jpg",
       brand: "Apple",
       features: [
-        "Protection chocs",
-        "Finition silicone",
-        "MagSafe",
-        "Anti-trace",
+        t('featShockProtect'),
+        t('featSiliconeFinish'),
+        t('featMagSafe'),
+        t('featAntiTrace'),
       ],
       rating: 4.3,
       reviews: 203,
-      badge: "MagSafe",
+      badge: 'badgeMagSafe',
       stock: 45,
       compatibility: ["iPhone 15 Pro"],
-      color: "Silicone",
+      color: t('colorSilicone'),
     },
     {
       id: 6,
@@ -144,17 +146,17 @@ export default function Accessories() {
       image: "/images/protection-ecran.jpg",
       brand: "ESR",
       features: [
-        "Dureté 9H",
-        "Anti-reflet",
-        "Facile installation",
-        "Pack de 2",
+        t('featHard9H'),
+        t('featAntiReflect'),
+        t('featEasyInstall'),
+        t('featPack2'),
       ],
       rating: 4.4,
       reviews: 312,
-      badge: "Anti-rayure",
+      badge: 'badgeScratchResist',
       stock: 60,
       compatibility: ["Tous modèles"],
-      color: "Transparent",
+      color: t('colorTransparent'),
     },
     {
       id: 7,
@@ -165,17 +167,17 @@ export default function Accessories() {
       image: "/images/etui-ipad.jpg",
       brand: "Logitech",
       features: [
-        "Clavier rétro-éclairé",
-        "Trackpad",
-        "Protection 360°",
-        "Pliable",
+        t('featBacklitKey'),
+        t('featTrackpad'),
+        t('featProtect360'),
+        t('featFoldable'),
       ],
       rating: 4.7,
       reviews: 67,
-      badge: "Clavier Intégré",
+      badge: 'badgeKeyboard',
       stock: 14,
       compatibility: ['iPad Pro 12.9"'],
-      color: "Gris",
+      color: t('colorGrey'),
     },
 
     // Chargement
@@ -188,17 +190,17 @@ export default function Accessories() {
       image: "/images/charger-magsafe.jpg",
       brand: "Apple",
       features: [
-        "Charge rapide 15W",
-        "2 appareils",
-        "LED indicateur",
-        "Compact",
+        t('featFastCharge15W'),
+        t('feat2Devices'),
+        t('featLEDInd'),
+        t('featCompact'),
       ],
       rating: 4.6,
       reviews: 78,
-      badge: "Rapide",
+      badge: 'badgeFast',
       stock: 18,
       compatibility: ["iPhone", "AirPods", "Apple Watch"],
-      color: "Blanc",
+      color: t('colorWhite'),
     },
     {
       id: 9,
@@ -209,17 +211,17 @@ export default function Accessories() {
       image: "/images/cable-usbc.jpg",
       brand: "Anker",
       features: [
-        "Charge rapide 240W",
-        "Données 40Gbps",
-        "Nylon tressé",
-        "2m longueur",
+        t('featFastCharge240W'),
+        t('featData40Gbps'),
+        t('featNylon'),
+        t('feat2m'),
       ],
       rating: 4.5,
       reviews: 189,
-      badge: "Ultra Rapide",
+      badge: 'badgeUltraFast',
       stock: 35,
       compatibility: ["USB-C Universel"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
     {
       id: 10,
@@ -230,17 +232,17 @@ export default function Accessories() {
       image: "/images/station-charge.jpg",
       brand: "Belkin",
       features: [
-        "Charge iPhone/AirPods/Apple Watch",
-        "Design compact",
-        "LED indicateur",
-        "Certifié MFi",
+        t('feat3in1Charge'),
+        t('featCompact'),
+        t('featLEDInd'),
+        t('featMFi'),
       ],
       rating: 4.6,
       reviews: 92,
-      badge: "3-en-1",
+      badge: 'badge3in1',
       stock: 14,
       compatibility: ["Apple Ecosystem"],
-      color: "Blanc",
+      color: t('colorWhite'),
     },
     {
       id: 11,
@@ -250,13 +252,13 @@ export default function Accessories() {
       originalPrice: "****",
       image: "/images/batterie-externe.jpg",
       brand: "Anker",
-      features: ["PD 30W", "3 ports", "LCD écran", "Recharge rapide"],
+      features: [t('featPD30W'), t('feat3Ports'), t('featLCD'), t('featFastCharge15W')],
       rating: 4.7,
       reviews: 145,
-      badge: "Haute Capacité",
+      badge: 'badgeHighCap',
       stock: 22,
       compatibility: ["Tous appareils"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
 
     // Smartwatch
@@ -268,13 +270,13 @@ export default function Accessories() {
       originalPrice: "****",
       image: "/images/galaxy-watch6.jpg",
       brand: "Samsung",
-      features: ['Écran 1.5"', "Batterie 40h", "ECG", "Tournante bezel"],
+      features: [t('featScreen15Watch'), t('featBatt40h'), t('featECG'), t('featRotatingBezel')],
       rating: 4.5,
       reviews: 89,
-      badge: "Nouveau",
+      badge: 'badgeNew',
       stock: 12,
       compatibility: ["Android", "Samsung"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
     {
       id: 13,
@@ -284,13 +286,13 @@ export default function Accessories() {
       originalPrice: "****",
       image: "/images/apple-watch9.jpg",
       brand: "Apple",
-      features: ["Écran Always-On", "ECG", "GPS", "18h batterie"],
+      features: [t('featAlwaysOn'), t('featECG'), t('featGPS'), t('feat18h')],
       rating: 4.8,
       reviews: 189,
-      badge: "Best-seller",
+      badge: 'badgeBestseller',
       stock: 18,
       compatibility: ["iPhone"],
-      color: "Midnight",
+      color: t('colorMidnight'),
     },
     {
       id: 14,
@@ -301,17 +303,17 @@ export default function Accessories() {
       image: "/images/huawei-watch.jpg",
       brand: "Huawei",
       features: [
-        "14 jours batterie",
-        "100+ modes sport",
-        "SpO2",
-        "Design premium",
+        t('featBatt14d'),
+        t('featSportModes'),
+        t('featSpO2'),
+        t('featPremDesign'),
       ],
       rating: 4.4,
       reviews: 76,
-      badge: "Autonomie",
+      badge: 'badgeAutonomy',
       stock: 9,
       compatibility: ["Android", "iOS"],
-      color: "Argent",
+      color: t('colorSilver'),
     },
 
     // Gaming
@@ -324,17 +326,17 @@ export default function Accessories() {
       image: "/images/dualsense-edge.jpg",
       brand: "Sony",
       features: [
-        "Contrôles personnalisables",
-        "Batterie longue durée",
-        "Retour haptique",
-        "Profiles",
+        t('featCustomControls'),
+        t('featHaptic'),
+        t('featProfiles'),
+        t('featBatt38h'), // Approximation if missing specific key
       ],
       rating: 4.8,
       reviews: 67,
-      badge: "Pro Gaming",
+      badge: 'badgeProGaming',
       stock: 8,
       compatibility: ["PS5", "PC"],
-      color: "Noir/Blanc",
+      color: t('colorBlackWhite'),
     },
     {
       id: 16,
@@ -345,17 +347,17 @@ export default function Accessories() {
       image: "/images/casque-gaming.jpg",
       brand: "SteelSeries",
       features: [
-        "Son spatial 360°",
-        "Batterie 38h",
-        "Micro rétractable",
-        "Multi-plateforme",
+        t('featSpatial360'),
+        t('featBatt38h'),
+        t('featRetractMic'),
+        t('featMultiPlat'),
       ],
       rating: 4.7,
       reviews: 78,
-      badge: "Wireless",
+      badge: 'badgeWireless',
       stock: 10,
       compatibility: ["PS5", "Xbox", "PC", "Mobile"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
     {
       id: 17,
@@ -366,17 +368,17 @@ export default function Accessories() {
       image: "/images/clavier-gaming.jpg",
       brand: "Razer",
       features: [
-        "Switches mécaniques",
-        "RGB personnalisable",
-        "Anti-ghosting",
-        "Wrist rest",
+        t('featMechSwitch'),
+        t('featRGB'),
+        t('featAntiGhost'),
+        t('featWristRest'),
       ],
       rating: 4.6,
       reviews: 112,
-      badge: "RGB",
+      badge: 'badgeRGB',
       stock: 15,
       compatibility: ["PC", "Mac", "PS5"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
 
     // Photo & Vidéo
@@ -389,17 +391,17 @@ export default function Accessories() {
       image: "/images/micro-rode.jpg",
       brand: "Rode",
       features: [
-        "Audio 24-bit",
-        "Portée 200m",
-        "Enregistrement sécurité",
-        "Kit complet",
+        t('featAudio24bit'),
+        t('featRange200m'),
+        t('featSafetyRec'),
+        t('featCompleteKit'),
       ],
       rating: 4.9,
       reviews: 45,
-      badge: "Professionnel",
+      badge: 'badgePro',
       stock: 6,
       compatibility: ["Smartphones", "Caméras"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
     {
       id: 19,
@@ -410,17 +412,17 @@ export default function Accessories() {
       image: "/images/objectif-moments1.jpg",
       brand: "Moment",
       features: [
-        "Grand angle 18mm",
-        "Lentilles premium",
-        "Montage facile",
-        "Sac inclus",
+        t('featWide18mm'),
+        t('featPremLens'),
+        t('featEasyMount'),
+        t('featBagIncl'),
       ],
       rating: 4.4,
       reviews: 56,
-      badge: "Pro Photo",
+      badge: 'badgeProPhoto',
       stock: 7,
       compatibility: ["iPhone 12-15"],
-      color: "Noir",
+      color: t('colorBlack'),
     },
     {
       id: 20,
@@ -431,17 +433,17 @@ export default function Accessories() {
       image: "/images/gimbal-dji.jpg",
       brand: "DJI",
       features: [
-        "Stabilisation 3 axes",
-        "Extension automatique",
-        "Mode suivi",
-        "Pliage compact",
+        t('featStab3Axis'),
+        t('featAutoExt'),
+        t('featTrackMode'),
+        t('featCompactFold'),
       ],
       rating: 4.8,
       reviews: 134,
-      badge: "Stabilisation",
+      badge: 'badgeStabilization',
       stock: 11,
       compatibility: ["Smartphones"],
-      color: "Gris",
+      color: t('colorGrey'),
     },
 
     // Maison Connectée
@@ -454,17 +456,17 @@ export default function Accessories() {
       image: "/images/google-nest.jpg",
       brand: "Google",
       features: [
-        "Assistant Google",
-        "Son amélioré",
-        "Contrôle domotique",
-        "Design textile",
+        t('featGoogleAssist'),
+        t('featBetterSound'),
+        t('featHomeControl'),
+        t('featTextileDesign'),
       ],
       rating: 4.5,
       reviews: 89,
-      badge: "Assistant Vocal",
+      badge: 'badgeVoiceAssist',
       stock: 25,
       compatibility: ["Google Home", "Android", "iOS"],
-      color: "Gris Charbon",
+      color: t('colorCharcoal'),
     },
     {
       id: 22,
@@ -475,17 +477,17 @@ export default function Accessories() {
       image: "/images/philips-hue.jpg",
       brand: "Philips",
       features: [
-        "3 ampoules LED",
-        "Bridge inclus",
-        "16M couleurs",
-        "Contrôle vocal",
+        t('feat3Bulbs'),
+        t('featBridgeIncl'),
+        t('feat16MColor'),
+        t('featVoiceControl'),
       ],
       rating: 4.7,
       reviews: 156,
-      badge: "Éclairage Smart",
+      badge: 'badgeSmartLight',
       stock: 8,
       compatibility: ["Apple HomeKit", "Google Home", "Alexa"],
-      color: "Blanc",
+      color: t('colorWhite'),
     },
   ];
 
@@ -524,45 +526,45 @@ export default function Accessories() {
 
   const getBadgeColor = (badge) => {
     switch (badge) {
-      case "Best-seller":
+      case "badgeBestseller":
         return "bg-red-700 text-white";
-      case "Nouveau":
+      case "badgeNew":
         return "bg-red-500 text-white";
-      case "MagSafe":
+      case "badgeMagSafe":
         return "bg-red-400 text-white";
-      case "Rapide":
+      case "badgeFast":
         return "bg-red-600 text-white";
-      case "Waterproof":
+      case "badgeWaterproof":
         return "bg-blue-600 text-white";
-      case "Pro Gaming":
+      case "badgeProGaming":
         return "bg-purple-600 text-white";
-      case "Anti-rayure":
+      case "badgeScratchResist":
         return "bg-gray-600 text-white";
-      case "Ultra Rapide":
+      case "badgeUltraFast":
         return "bg-red-500 text-white";
-      case "Professionnel":
+      case "badgePro":
         return "bg-gray-700 text-white";
-      case "3-en-1":
+      case "badge3in1":
         return "bg-red-500 text-white";
-      case "Wireless":
+      case "badgeWireless":
         return "bg-blue-500 text-white";
-      case "Pro Photo":
+      case "badgeProPhoto":
         return "bg-gray-800 text-white";
-      case "Top Qualité":
+      case "badgeTopQuality":
         return "bg-red-700 text-white";
-      case "Clavier Intégré":
+      case "badgeKeyboard":
         return "bg-blue-700 text-white";
-      case "Haute Capacité":
+      case "badgeHighCap":
         return "bg-red-600 text-white";
-      case "Autonomie":
+      case "badgeAutonomy":
         return "bg-green-600 text-white";
-      case "RGB":
+      case "badgeRGB":
         return "bg-purple-700 text-white";
-      case "Stabilisation":
+      case "badgeStabilization":
         return "bg-blue-600 text-white";
-      case "Assistant Vocal":
+      case "badgeVoiceAssist":
         return "bg-green-500 text-white";
-      case "Éclairage Smart":
+      case "badgeSmartLight":
         return "bg-yellow-600 text-white";
       default:
         return "bg-red-300 text-white";
@@ -580,11 +582,10 @@ export default function Accessories() {
       <section className="relative py-16 bg-gradient-to-r from-red-900/30 to-red-800/30 border-b border-white/10">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-mono text-4xl md:text-5xl font-bold text-white mb-4">
-            Accessoires Premium
+            {t('accHeroTitle')}
           </h1>
           <p className="font-mono text-red-100 text-xl max-w-2xl mx-auto">
-            Complétez votre expérience numérique avec nos accessoires
-            soigneusement sélectionnés pour leur qualité, design et performance.
+            {t('accHeroDesc')}
           </p>
 
           {/* Price Toggle */}
@@ -594,10 +595,10 @@ export default function Accessories() {
               className="font-mono flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/30 rounded-2xl text-white transition-all duration-300"
             >
               {showPrices ? <EyeOff size={20} /> : <Eye size={20} />}
-              {showPrices ? "Cacher les prix" : "Afficher les prix"}
+              {showPrices ? t('hidePrices') : t('showPrices')}
             </button>
             <div className="text-red-300 font-mono text-sm">
-              {showPrices ? "Prix visibles" : "Prix masqués"}
+              {showPrices ? t('pricesVisible') : t('pricesHidden')}
             </div>
           </div>
         </div>
@@ -635,25 +636,25 @@ export default function Accessories() {
 
           {/* Sort By */}
           <div className="flex items-center gap-4">
-            <span className="font-mono text-red-100">Trier par :</span>
+            <span className="font-mono text-red-100">{t('sortLabel')}</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className="font-mono bg-white/10 border border-white/30 rounded-2xl px-4 py-2 text-white focus:outline-none focus:border-red-500 transition-all duration-300"
             >
-              <option value="name">Nom (A-Z)</option>
-              <option value="price-asc">Prix croissant</option>
-              <option value="price-desc">Prix décroissant</option>
-              <option value="rating">Meilleures notes</option>
+              <option value="name">{t('sortName')}</option>
+              <option value="price-asc">{t('sortPriceAsc')}</option>
+              <option value="price-desc">{t('sortPriceDesc')}</option>
+              <option value="rating">{t('sortRating')}</option>
             </select>
           </div>
         </div>
 
         {/* Results Count */}
         <div className="font-mono text-red-300 mb-6">
-          {sortedAccessories.length} accessoires trouvés
+          {sortedAccessories.length} {t('foundAccessories')}
           {selectedCategory !== "all" &&
-            ` dans ${categories.find((c) => c.id === selectedCategory)?.name}`}
+            ` ${t('inCategory')} ${categories.find((c) => c.id === selectedCategory)?.name}`}
         </div>
 
         {/* Accessories Grid */}
@@ -670,7 +671,7 @@ export default function Accessories() {
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-semibold ${getBadgeColor(accessory.badge)}`}
                 >
-                  {accessory.badge}
+                  {t(accessory.badge)}
                 </span>
               </div>
 
@@ -685,7 +686,7 @@ export default function Accessories() {
                         : "bg-red-500/20 text-red-400"
                   }`}
                 >
-                  {accessory.stock} en stock
+                  {accessory.stock} {t('stockLabel')}
                 </span>
               </div>
 
@@ -726,7 +727,7 @@ export default function Accessories() {
                 <div className="flex items-center gap-2">
                   <div className="flex">{renderStars(accessory.rating)}</div>
                   <span className="font-mono text-red-300/70 text-sm">
-                    {accessory.rating.toFixed(1)} • {accessory.reviews} avis
+                    {accessory.rating.toFixed(1)} • {accessory.reviews} {t('reviews')}
                   </span>
                 </div>
 
@@ -755,7 +756,7 @@ export default function Accessories() {
                   ))}
                   {accessory.features.length > 3 && (
                     <div className="font-mono text-red-300 text-sm">
-                      +{accessory.features.length - 3} fonctionnalités
+                      +{accessory.features.length - 3} {t('featuresCount')}
                     </div>
                   )}
                 </div>
@@ -783,7 +784,7 @@ export default function Accessories() {
                     } shadow-lg`}
                   >
                     <ShoppingCart size={18} />
-                    {showPrices ? "Ajouter" : "Découvrir"}
+                    {showPrices ? t('add') : t('discover')}
                   </button>
                 </div>
               </div>
@@ -794,7 +795,7 @@ export default function Accessories() {
         {/* Load More */}
         <div className="text-center mt-12">
           <button className="font-mono bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:border-red-200 flex items-center gap-2 mx-auto">
-            Voir plus d'accessoires
+            {t('viewMoreAccessories')}
             <span className="text-xl">↓</span>
           </button>
         </div>

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { addressComponents } from "../components/address_components";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,57 +45,32 @@ export default function Contact() {
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
-  const contactInfo = [
-    {
-      title: "Département du Sud",
-      address: "73 Rue Nicolas Geffrard",
-      city: "Arrondissement des Cayes, HT2345",
-      phone: "+509 48 00 0000",
-      email: "sud@michelcell.ht",
-      mapLink: "https://maps.app.goo.gl/CJThiJHgriBKh1sd8",
-      hours: "Lun-Sam: 8h-19h, Dim: 10h-17h",
-    },
-    {
-      title: "Département du Nord",
-      address: "Rue 14, & 15 I",
-      city: "Cap-Haïtien, HT1110",
-      phone: "+509 44 00 0000",
-      email: "nord@michelcell.ht",
-      mapLink: "https://maps.app.goo.gl/8sFk3hG5bV9Rx7QZ8",
-      hours: "Lun-Sam: 8h-19h, Dim: 10h-17h",
-    },
-  ];
-
   const subjects = [
-    "Demande d'information",
-    "Support technique",
-    "Réparation d'appareil",
-    "Commande spéciale",
-    "Retour produit",
-    "Partenaire commercial",
-    "Autre",
+    t('contactSubjInfo'),
+    t('contactSubjSupport'),
+    t('contactSubjRepair'),
+    t('contactSubjOrder'),
+    t('contactSubjReturn'),
+    t('contactSubjPartner'),
+    t('contactSubjOther'),
   ];
 
   const faqs = [
     {
-      question: "Quels sont vos horaires d'ouverture ?",
-      answer:
-        "Nos boutiques sont ouvertes du lundi au samedi de 8h à 19h, et le dimanche de 10h à 17h.",
+      question: t('contactFaq1Q'),
+      answer: t('contactFaq1A'),
     },
     {
-      question: "Combien de temps prend une réparation ?",
-      answer:
-        "La plupart des réparations sont effectuées en 24-48h. Pour les cas complexes, nous vous tiendrons informés du délai estimé.",
+      question: t('contactFaq2Q'),
+      answer: t('contactFaq2A'),
     },
     {
-      question: "Offrez-vous la garantie sur vos produits ?",
-      answer:
-        "Oui, tous nos produits bénéficient d'une garantie d'un an minimum. Les produits reconditionnés ont 6 mois de garantie.",
+      question: t('contactFaq3Q'),
+      answer: t('contactFaq3A'),
     },
     {
-      question: "Acceptez-vous les commandes en ligne ?",
-      answer:
-        "Oui, vous pouvez commander en ligne et retirer en boutique, ou bénéficier de notre service de livraison.",
+      question: t('contactFaq4Q'),
+      answer: t('contactFaq4A'),
     },
   ];
 
@@ -103,12 +80,10 @@ export default function Contact() {
       <section className="relative py-16 bg-gradient-to-r from-red-900/30 to-red-950/30 border-b border-white/10">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Contactez-nous
+            {t('contactHeroTitle')}
           </h1>
           <p className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
-            Notre équipe est là pour répondre à toutes vos questions. N'hésitez
-            pas à nous contacter pour des conseils, réparations ou toute autre
-            demande.
+            {t('contactHeroDesc')}
           </p>
         </div>
       </section>
@@ -133,7 +108,7 @@ export default function Contact() {
             {/* Quick Contact */}
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
               <h3 className="text-xl font-bold text-white mb-4">
-                Contact Rapide
+                {t('contactQuickTitle')}
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
@@ -141,10 +116,10 @@ export default function Contact() {
                     <a href="https://www.instagram.com/michelcell_ht">
                       <img
                         src="/icon/whatsapp-color-svgrepo-com.svg"
-                        alt="WhatsApp"
+                        alt={t('altWhatsApp')}
                         className="h-9 w-9 inline-block mr-2"
                       />
-                      Whatsapp: +(509) 4776 3992
+                      {t('contactWhatsAppLabel')}
                     </a>
                   </span>
                 </div>
@@ -153,10 +128,10 @@ export default function Contact() {
                     <a href="https://www.instagram.com/michelcell_ht">
                       <img
                         src="/icon/messenger-facebook-svgrepo-com.svg"
-                        alt="Instagram"
+                        alt={t('altMessenger')}
                         className="h-9 w-9 inline-block mr-2"
                       />
-                      FaceBook: @michelcell_ht
+                      {t('contactFacebookLabel')}
                     </a>
                   </span>
                 </div>
@@ -165,10 +140,10 @@ export default function Contact() {
                     <a href="https://www.instagram.com/michelcell_ht">
                       <img
                         src="/icon/instagram-svgrepo-com.svg"
-                        alt="Instagram"
+                        alt={t('altInstagram')}
                         className="h-9 w-9 inline-block mr-2"
                       />
-                      Instagram: @michelcell_ht
+                      {t('contactInstagramLabel')}
                     </a>
                   </span>
                 </div>
@@ -180,17 +155,16 @@ export default function Contact() {
           <div className="lg:col-span-2">
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-6">
-                Envoyez-nous un message
+                {t('contactFormTitle')}
               </h2>
 
               {isSubmitted ? (
                 <div className="bg-red-500/20 border border-red-500/30 rounded-xl p-6 mb-6">
                   <div className="text-red-400 text-lg font-bold mb-2">
-                    ✅ Message envoyé !
+                    {t('contactSuccessTitle')}
                   </div>
                   <p className="text-red-300">
-                    Merci pour votre message. Notre équipe vous répondra dans
-                    les plus brefs délais.
+                    {t('contactSuccessDesc')}
                   </p>
                 </div>
               ) : null}
@@ -202,7 +176,7 @@ export default function Contact() {
                       htmlFor="name"
                       className="text-gray-300 text-sm block mb-2"
                     >
-                      Nom complet *
+                      {t('contactLabelName')}
                     </label>
                     <input
                       type="text"
@@ -212,7 +186,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-all duration-300"
-                      placeholder="Votre nom"
+                      placeholder={t('contactPlaceName')}
                     />
                   </div>
 
@@ -221,7 +195,7 @@ export default function Contact() {
                       htmlFor="email"
                       className="text-gray-300 text-sm block mb-2"
                     >
-                      Email *
+                      {t('contactLabelEmail')}
                     </label>
                     <input
                       type="email"
@@ -231,7 +205,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-all duration-300"
-                      placeholder="votre@email.com"
+                      placeholder={t('contactPlaceEmail')}
                     />
                   </div>
                 </div>
@@ -242,7 +216,7 @@ export default function Contact() {
                       htmlFor="phone"
                       className="text-gray-300 text-sm block mb-2"
                     >
-                      Téléphone
+                      {t('contactLabelPhone')}
                     </label>
                     <input
                       type="tel"
@@ -251,7 +225,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-all duration-300"
-                      placeholder="+509 XX XX XX XX"
+                      placeholder={t('contactPlacePhone')}
                     />
                   </div>
 
@@ -260,7 +234,7 @@ export default function Contact() {
                       htmlFor="subject"
                       className="text-gray-300 text-sm block mb-2"
                     >
-                      Sujet *
+                      {t('contactLabelSubject')}
                     </label>
                     <select
                       id="subject"
@@ -270,7 +244,7 @@ export default function Contact() {
                       required
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-all duration-300"
                     >
-                      <option value="">Sélectionnez un sujet</option>
+                      <option value="">{t('contactSelectSubject')}</option>
                       {subjects.map((subject, index) => (
                         <option key={index} value={subject}>
                           {subject}
@@ -285,7 +259,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="text-gray-300 text-sm block mb-2"
                   >
-                    Message *
+                    {t('contactLabelMessage')}
                   </label>
                   <textarea
                     id="message"
@@ -295,7 +269,7 @@ export default function Contact() {
                     required
                     rows={6}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-all duration-300 resize-none"
-                    placeholder="Décrivez votre demande en détail..."
+                    placeholder={t('contactPlaceMessage')}
                   />
                 </div>
 
@@ -306,7 +280,7 @@ export default function Contact() {
                     className="w-4 h-4 text-red-600 bg-white/5 border-white/10 rounded focus:ring-red-500 focus:ring-2"
                   />
                   <label htmlFor="newsletter" className="text-gray-300 text-sm">
-                    Je souhaite recevoir les offres spéciales et actualités
+                    {t('contactNewsletter')}
                   </label>
                 </div>
 
@@ -318,16 +292,15 @@ export default function Contact() {
                   {isLoading ? (
                     <span className="flex items-center justify-center gap-2">
                       <span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></span>
-                      Envoi en cours...
+                      {t('contactBtnSending')}
                     </span>
                   ) : (
-                    "Envoyer le message"
+                    t('contactBtnSend')
                   )}
                 </button>
 
                 <p className="text-gray-400 text-sm text-center">
-                  * Champs obligatoires. Nous répondons généralement dans les
-                  24h.
+                  {t('contactDisclaimer')}
                 </p>
               </form>
             </div>
@@ -335,7 +308,7 @@ export default function Contact() {
             {/* FAQ Section */}
             <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-6">
-                Questions Fréquentes
+                {t('contactFaqTitle')}
               </h2>
               <div className="space-y-4">
                 {faqs.map((faq, index) => (
@@ -354,7 +327,7 @@ export default function Contact() {
                     to="/faq"
                     className="text-red-400 hover:text-red-300 transition-colors duration-300 text-sm inline-flex items-center gap-2"
                   >
-                    Voir toutes les FAQ
+                    {t('contactFaqLink')}
                     <span>→</span>
                   </Link>
                 </div>
@@ -368,10 +341,10 @@ export default function Contact() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">
-                🔴 Urgence Technique ?
+                {t('contactEmergencyTitle')}
               </h3>
               <p className="text-gray-300">
-                Pour les réparations urgentes ou problèmes techniques critiques
+                {t('contactEmergencyDesc')}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -379,13 +352,13 @@ export default function Contact() {
                 href="tel:+50948000002"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 text-center"
               >
-                Urgence : +509 48 00 0002
+                {t('contactEmergencyBtn')}
               </a>
               <Link
                 to="/services/repairs"
                 className="bg-transparent hover:bg-white/10 border-2 border-white/20 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 text-center"
               >
-                Service Réparation
+                {t('contactRepairBtn')}
               </Link>
             </div>
           </div>

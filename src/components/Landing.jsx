@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import Hero1 from "./hero1";
 import Brand from "./brand";
 import TestimonialsSection from "./testimonials";
@@ -8,56 +9,18 @@ import Footer from "./footer";
 import ImageGallerySection from "./imageGallery";
 
 export default function Landing() {
-  const [lang, setLang] = useState("fr");
+  const { lang, setLang, t, getCookie, setCookie } = useLanguage();
   const [showCookieConsent, setShowCookieConsent] = useState(false);
-  const waMessage =
-    lang === "fr"
-      ? encodeURIComponent(
-          "Bonjour l'équipe Michel Cell 👋 \n\nJe viens de consulter votre site web et je souhaite en savoir plus sur vos services. Pourriez-vous me fournir plus d'informations ?\n\n*Service qui m'intéresse :* [préciser ici]\n*Besoin spécifique :* [décrire ici]",
-        )
-      : encodeURIComponent(
-          "Hello Michel Cell team 👋 \n\nI just visited your website and I would like to learn more about your services. Could you provide me with more information?\n\n*Service I'm interested in:* [specify here]\n*Specific need:* [describe here]",
-        );
-
-  // Cookie helpers
-  const setCookie = (name, value, days) => {
-    let expires = "";
-    if (days) {
-      const date = new Date();
-      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-  };
-
-  const getCookie = (name) => {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(";");
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == " ") c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-  };
+  
+  const waMessage = encodeURIComponent(t('waMessage'));
 
   useEffect(() => {
-    const saved = getCookie("mc_lang");
     const consentGiven = getCookie("mc_consent");
-
-    if (saved === "fr" || saved === "en") {
-      setLang(saved);
-    }
 
     if (!consentGiven) {
       setShowCookieConsent(true);
     }
-  }, []);
-
-  const setLangAndCookie = (value) => {
-    setLang(value);
-    setCookie("mc_lang", value, 365);
-  };
+  }, [getCookie]);
 
   const acceptCookies = () => {
     setCookie("mc_consent", "true", 365);
@@ -66,13 +29,13 @@ export default function Landing() {
 
   return (
     <>
-      <Hero1 lang={lang} />
-      <Brand lang={lang} />
-      <TestimonialsSection lang={lang} />
-      <ProductsPreviewSection lang={lang} />
-      <ImageGallerySection lang={lang} />
-      <OurVisionSection lang={lang} />
-      <Footer lang={lang} />
+      <Hero1 />
+      <Brand />
+      <TestimonialsSection />
+      <ProductsPreviewSection />
+      <ImageGallerySection />
+      <OurVisionSection />
+      <Footer />
 
       <div className="fixed bottom-6 right-6 z-50 md:bottom-8 md:right-8 flex items-center gap-3">
         {/* Language toggle (FR / EN) */}
@@ -80,8 +43,8 @@ export default function Landing() {
           <button
             type="button"
             aria-pressed={lang === "fr"}
-            onClick={() => setLangAndCookie("fr")}
-            title="Français"
+            onClick={() => setLang("fr")}
+            title={t('labelFrench')}
             className={`px-3 py-1 rounded-full text-sm font-semibold transition ${lang === "fr" ? "bg-white text-gray-900" : "text-white/90 hover:bg-white/10"}`}
           >
             FR
@@ -89,8 +52,8 @@ export default function Landing() {
           <button
             type="button"
             aria-pressed={lang === "en"}
-            onClick={() => setLangAndCookie("en")}
-            title="English"
+            onClick={() => setLang("en")}
+            title={t('labelEnglish')}
             className={`ml-1 px-3 py-1 rounded-full text-sm font-semibold transition ${lang === "en" ? "bg-white text-gray-900" : "text-white/90 hover:bg-white/10"}`}
           >
             EN
@@ -102,7 +65,7 @@ export default function Landing() {
             href={`https://wa.me/50947763992?text=${waMessage}`}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contact us on WhatsApp"
+            aria-label={t('contactWhatsApp')}
             className="flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-transform transform hover:scale-105"
           >
             <svg
@@ -116,7 +79,7 @@ export default function Landing() {
             </svg>
           </a>
           <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap bg-gray-900 text-white text-sm px-3 py-1 rounded opacity-0 pointer-events-none transition-opacity duration-200 group-hover:opacity-100">
-            {lang === "fr" ? "Contacter nous" : "Contact us"}
+            {t('contactUs')}
           </span>
         </div>
       </div>
@@ -126,12 +89,10 @@ export default function Landing() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-md mx-4 border border-gray-200 dark:border-gray-700">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              {lang === "fr" ? "Paramètres des Cookies" : "Cookie Settings"}
+              {t('cookieSettings')}
             </h2>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              {lang === "fr"
-                ? "Notre site utilise des cookies pour améliorer votre expérience et mémoriser vos préférences (langue, données de navigation, etc.). En acceptant, vous consentez à l'utilisation de ces cookies."
-                : "Our site uses cookies to enhance your experience and remember your preferences (language, browsing data, etc.). By accepting, you consent to the use of these cookies."}
+              {t('cookieMessage')}
             </p>
 
             <div className="flex flex-col gap-3 mb-6">
@@ -139,20 +100,18 @@ export default function Landing() {
                 onClick={acceptCookies}
                 className="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
               >
-                {lang === "fr" ? "Accepter" : "Accept"}
+                {t('accept')}
               </button>
               <button
                 onClick={() => setShowCookieConsent(false)}
                 className="w-full px-4 py-3 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-semibold rounded-lg transition-colors"
               >
-                {lang === "fr" ? "Refuser" : "Decline"}
+                {t('decline')}
               </button>
             </div>
 
             <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-              {lang === "fr"
-                ? "Vous pouvez modifier vos préférences dans les paramètres du navigateur."
-                : "You can change your preferences in browser settings."}
+              {t('browserSettings')}
             </p>
           </div>
         </div>

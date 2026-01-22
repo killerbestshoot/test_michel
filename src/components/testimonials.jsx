@@ -1,70 +1,48 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
-const TestimonialsSection = ({ lang: propLang }) => {
-
-  const [lang, setLang] = useState('fr');
-
-  // Cookie helper
-  const getCookie = (name) => {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for(let i=0;i < ca.length;i++) {
-      let c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-  };
-
-  useEffect(() => {
-    // Read language from cookie or use prop
-    const saved = getCookie('mc_lang');
-    if (saved === 'fr' || saved === 'en') {
-      setLang(saved);
-    } else if (propLang === 'fr' || propLang === 'en') {
-      setLang(propLang);
-    }
-  }, [propLang]);
+const TestimonialsSection = () => {
+  const { t } = useLanguage();
 
   const testimonials = [
     {
       id: 1,
       name: "Mario Dubois",
-      role: "Kliyan satisfe",
+      role: "testim1Role",
       image: "/images/mario_dubois.webp",
-      text: "Avek MichelCell, mwen jwenn yon telefòn ki nan gou mwen ! Sèvis kliyan an te ekselan e mwen rekòmande yo bay tout moun.",
+      text: "testim1Text",
       rating: 5
     },
     {
       id: 2,
       name: "Thomas Martin",
-      role: "Gamer passionné",
+      role: "testim2Role",
       image: "/images/thomas_martin.jpg",
-      text: "lontan mwen t ap chèche yon laptop pou jwèt videyo, MichelCell te ede m jwenn youn ki pafè pou bezwen mwen yo. Eksperyans achte a te fasil epi rapid.",
+      text: "testim2Text",
       rating: 5
     },
     {
       id: 3,
       name: "Sophie Lambert",
-      role: "Professionnelle",
+      role: "testim3Role",
       image: "/images/sophie_lambert.jpg",
-      text: "Mon MacBook est comme neuf après la réparation. Rapidité et expertise au rendez-vous. Un service de qualité que je vais recommander.",
+      text: "testim3Text",
       rating: 4
     },
     {
       id: 4,
       name: "Natacha Cliford",
-      role: "Etidyan fakilte dwa",
+      role: "testim4Role",
       image: "/images/natacha_cliford.jpg",
-      text: "Nan zafè acha telefòn ak akseswa, MichelCell te ban mwen yon eksperyans san parèy. Mèci pou tout èd la!",
+      text: "testim4Text",
       rating: 5
     },
     {
       id: 5,
       name: "Petit Daphné",
-      role: "Fotograf amate",
+      role: "testim5Role",
       image: "/images/petit_daphne.jpg",
-      text: "Mwen renmen nouvo kamera mwen an! MichelCell te ede m chwazi li epi sèvis la te ekstraòdinè. M'ap toujou achte isit la.",
+      text: "testim5Text",
       rating: 5
     }
   ];
@@ -128,10 +106,10 @@ const TestimonialsSection = ({ lang: propLang }) => {
         {/* Section Title */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            { lang === 'fr' ? 'Ils nous font confiance' : 'What Our Customers Say' }
+            {t('testimonialsTitle')}
           </h2>
           <p className="text-red-100 text-xl max-w-2xl mx-auto">
-            { lang === 'fr' ? 'Découvrez les expériences de nos clients satisfaits' : 'Discover the experiences of our satisfied customers' }
+            {t('testimonialsSubtitle')}
           </p>
         </div>
 
@@ -163,12 +141,12 @@ const TestimonialsSection = ({ lang: propLang }) => {
                     {testimonials[currentTestimonial].name}
                   </div>
                   <div className="text-red-200 font-semibold text-lg">
-                    {testimonials[currentTestimonial].role}
+                    {t(testimonials[currentTestimonial].role)}
                   </div>
                 </div>
 
                 <blockquote className="text-red-100 text-lg md:text-xl leading-relaxed italic mb-8">
-                  "{testimonials[currentTestimonial].text}"
+                  "{t(testimonials[currentTestimonial].text)}"
                 </blockquote>
 
                 {/* Navigation Dots */}
@@ -176,7 +154,7 @@ const TestimonialsSection = ({ lang: propLang }) => {
                   <button
                     onClick={prevTestimonial}
                     className="p-2 rounded-full bg-white/10 hover:bg-white/20 hover:border-red-200 transition-all duration-300 text-white border border-white/20"
-                    aria-label="Témoignage précédent"
+                    aria-label={t('prevTestimonial')}
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -193,7 +171,7 @@ const TestimonialsSection = ({ lang: propLang }) => {
                             ? 'bg-red-500 scale-125'
                             : 'bg-white/30 hover:bg-red-400'
                         }`}
-                        aria-label={`Aller au témoignage ${index + 1}`}
+                        aria-label={`${t('goToTestimonial')} ${index + 1}`}
                       />
                     ))}
                   </div>
@@ -201,7 +179,7 @@ const TestimonialsSection = ({ lang: propLang }) => {
                   <button
                     onClick={nextTestimonial}
                     className="p-2 rounded-full bg-white/10 hover:bg-white/20 hover:border-red-200 transition-all duration-300 text-white border border-white/20"
-                    aria-label="Témoignage suivant"
+                    aria-label={t('nextTestimonial')}
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -218,16 +196,16 @@ const TestimonialsSection = ({ lang: propLang }) => {
           <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
             <div className="text-3xl font-bold text-red-200 mb-2">500+</div>
             <div className="text-red-100">
-              { lang === 'fr' ? 'Clients satisfaits' : 'Satisfied Customers' }
+              {t('statClients')}
             </div>
           </div>
           <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
             <div className="text-3xl font-bold text-red-200 mb-2">98%</div>
-            <div className="text-red-100">{ lang === 'fr' ? 'Taux de satisfaction' : 'Satisfaction Rate' }</div>
+            <div className="text-red-100">{t('statSatisfaction')}</div>
           </div>
           <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
             <div className="text-3xl font-bold text-red-200 mb-2">24h</div>
-            <div className="text-red-100">{ lang === 'fr' ? 'Support réactif' : 'Responsive Support' }</div>
+            <div className="text-red-100">{t('statSupport')}</div>
           </div>
         </div>
       </div>

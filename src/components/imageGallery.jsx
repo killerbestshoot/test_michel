@@ -1,49 +1,51 @@
 import React, { useState, useEffect } from "react";
+import { useLanguage } from '../context/LanguageContext';
 
 const ImageGallerySection = () => {
+  const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState("left");
 
   const images = [
     {
       src: "/images/storefront_michel_cell.jpg",
-      alt: "Michel Cell Storefront",
-      caption: "Notre boutique principale",
+      alt: t('imgStorefront'),
+      caption: t('imgStorefront'),
     },
     {
       src: "/images/store-interior-1.jpg",
-      alt: "Intérieur de la boutique",
-      caption: "Espace d'exposition moderne",
+      alt: t('imgInterior'),
+      caption: t('imgInterior'),
     },
     {
       src: "/images/our_last_smartphone.jpg",
-      alt: "Display de produits",
-      caption: "Nos derniers smartphones",
+      alt: t('imgSmartphone'),
+      caption: t('imgSmartphone'),
     },
     {
       src: "/images/customer-service.jpg",
-      alt: "Service client",
-      caption: "Accompagnement personnalisé",
+      alt: t('imgService'),
+      caption: t('imgService'),
     },
     {
       src: "/images/repair-station.jpg",
-      alt: "Station de réparation",
-      caption: "Atelier technique expert",
+      alt: t('imgRepair'),
+      caption: t('imgRepair'),
     },
     {
       src: "/images/gaming_space_vr.jpg",
-      alt: "Espace gaming",
-      caption: "Zone dédiée aux gamers",
+      alt: t('imgGaming'),
+      caption: t('imgGaming'),
     },
     {
       src: "/images/accessories-wall.jpg",
-      alt: "Mur d'accessoires",
-      caption: "Large choix d'accessoires",
+      alt: t('imgAccessories'),
+      caption: t('imgAccessories'),
     },
     {
       src: "/images/team-photo.jpg",
-      alt: "Équipe Michel Cell",
-      caption: "Notre équipe d'experts",
+      alt: t('imgTeam'),
+      caption: t('imgTeam'),
     },
   ];
 
@@ -149,7 +151,7 @@ const ImageGallerySection = () => {
               setDirection(getRandomDirection());
             }}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/40 backdrop-blur-sm hover:bg-black/60 border border-white/30 rounded-full p-3 md:p-4 transition-all duration-300 hover:scale-110 hover:border-red-400 text-white"
-            aria-label="Image précédente"
+            aria-label={t('imgPrev')}
           >
             <svg
               className="w-6 h-6 md:w-8 md:h-8"
@@ -172,7 +174,7 @@ const ImageGallerySection = () => {
               setDirection(getRandomDirection());
             }}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/40 backdrop-blur-sm hover:bg-black/60 border border-white/30 rounded-full p-3 md:p-4 transition-all duration-300 hover:scale-110 hover:border-red-400 text-white"
-            aria-label="Image suivante"
+            aria-label={t('imgNext')}
           >
             <svg
               className="w-6 h-6 md:w-8 md:h-8"
@@ -219,7 +221,7 @@ const ImageGallerySection = () => {
                         ? "bg-red-500 scale-125"
                         : "bg-white/60 hover:bg-red-400"
                     }`}
-                    aria-label={`Aller à l'image ${index + 1}`}
+                    aria-label={`${t('goToImage')} ${index + 1}`}
                   />
                 ))}
               </div>

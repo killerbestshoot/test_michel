@@ -1,29 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
-const OurVisionSection = ({lang: propLang}) => {
-  const [lang, setLang] = useState('fr');
-
-  // Cookie helper
-  const getCookie = (name) => {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for(let i=0;i < ca.length;i++) {
-      let c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-  };
-
-  useEffect(() => {
-    // Read language from cookie or use prop
-    const saved = getCookie('mc_lang');
-    if (saved === 'fr' || saved === 'en') {
-      setLang(saved);
-    } else if (propLang === 'fr' || propLang === 'en') {
-      setLang(propLang);
-    }
-  }, [propLang]);
+const OurVisionSection = () => {
+  const { t } = useLanguage();
 
   const [animatedValues, setAnimatedValues] = useState({
     clients: 0,
@@ -71,46 +50,46 @@ const OurVisionSection = ({lang: propLang}) => {
   const values = [
     {
       icon: "🚀",
-      title: lang === 'fr' ? 'Innovation Continue' : 'Continuous Innovation',
-      description: lang === 'fr' ? "Nous restons à la pointe de la technologie pour vous offrir les dernières innovations et tendances du marché numérique." : "We stay at the forefront of technology to bring you the latest innovations and trends in the digital market."
+      title: t('valInnovation'),
+      description: t('valInnovationDesc')
     },
     {
       icon: "💎",
-      title: lang === 'fr' ? 'Qualité Premium' : 'Premium Quality',
-      description: lang === 'fr' ? "Chaque produit est soigneusement sélectionné et testé pour garantir une excellence irréprochable." : "Each product is carefully selected and tested to ensure impeccable excellence."
+      title: t('valQuality'),
+      description: t('valQualityDesc')
     },
     {
       icon: "🤝",
-      title: lang === 'fr' ? "Accompagnement Personnalisé" : "Personalized Support",
-      description: lang === 'fr' ? "Notre équipe d'experts vous guide dans vos choix avec des conseils adaptés à vos besoins spécifiques." : "Our team of experts guides you in your choices with advice tailored to your specific needs."
+      title: t('valSupport'),
+      description: t('valSupportDesc')
     },
     {
       icon: "🌱",
-      title: lang === 'fr' ? "Développement Durable" : "Sustainable Development",
-      description: lang === 'fr' ? "Nous nous engageons dans une démarche éco-responsable avec des produits reconditionnés et recyclables." : "We are committed to an eco-responsible approach with refurbished and recyclable products."
+      title: t('valSustainable'),
+      description: t('valSustainableDesc')
     }
   ];
 
   const milestones = [
     {
       year: "2015",
-      title: lang === 'fr' ? "Fondation" : "Foundation",
-      description: lang === 'fr' ? "Ouverture de notre premier espace dédié au numérique" : "Opening of our first digital space"
+      title: t('milestone2015Title'),
+      description: t('milestone2015Desc')
     },
     {
       year: "2018",
-      title: lang === 'fr' ? "Expansion" : "Expansion",
-      description: lang === 'fr' ? "Lancement de notre service de réparation expert" : "Launch of our expert repair service"
+      title: t('milestone2018Title'),
+      description: t('milestone2018Desc')
     },
     {
       year: "2021",
-      title: lang === 'fr' ? "Transformation" : "Transformation",
-      description: lang === 'fr' ? "Digitalisation complète et e-commerce" : "Complete digitalization and e-commerce"
+      title: t('milestone2021Title'),
+      description: t('milestone2021Desc')
     },
     {
       year: "2024",
-      title: lang === 'fr' ? "Innovation" : "Innovation",
-      description: lang === 'fr' ? "Intégration IA et réalité augmentée" : "Integration of AI and augmented reality"
+      title: t('milestone2024Title'),
+      description: t('milestone2024Desc')
     }
   ];
 
@@ -130,10 +109,10 @@ const OurVisionSection = ({lang: propLang}) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-sans text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            { lang === 'fr' ? 'Notre Vision et Nos Valeurs' : 'Our Vision and Values' }
+            {t('visionTitle')}
           </h2>
           <p className="font-sans text-red-100 text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
-            { lang === 'fr' ? "Révolutionner l'expérience numérique grâce à l'expertise, l'innovation et un engagement sans faille envers l'excellence." : "Revolutionizing the digital experience through expertise, innovation, and an unwavering commitment to excellence." }
+            {t('visionDesc')}
           </p>
         </div>
 
@@ -143,19 +122,19 @@ const OurVisionSection = ({lang: propLang}) => {
           <div className="space-y-6">
             <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-8 hover:bg-white/15 hover:border-red-200 transition-all duration-500">
               <h3 className="font-sans text-2xl font-bold text-white mb-4">
-                { lang === 'fr' ? 'Notre Mission' : 'Our Mission' }
+                {t('missionTitle')}
               </h3>
               <p className="font-sans text-red-100 text-lg leading-relaxed">
-                { lang === 'fr' ? "Chez MichelCell, notre mission est de fournir des solutions numériques innovantes et personnalisées qui répondent aux besoins uniques de chaque client. Nous nous efforçons de créer une expérience utilisateur exceptionnelle en combinant expertise technique, service client attentif et engagement envers la qualité." : "At MichelCell, our mission is to provide innovative and personalized digital solutions that meet the unique needs of each client. We strive to create an exceptional user experience by combining technical expertise, attentive customer service, and a commitment to quality." }
+                {t('missionDesc')}
               </p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-8 hover:bg-white/15 hover:border-red-200 transition-all duration-500">
               <h3 className="font-sans text-2xl font-bold text-white mb-4">
-                { lang === 'fr' ? 'Notre Engagement' : 'Our Commitment' }
+                {t('commitmentTitle')}
               </h3>
               <p className="font-sans text-red-100 text-lg leading-relaxed">
-                { lang === 'fr' ? "Nous nous engageons à fournir des produits de qualité, des conseils d'experts et un service après-vente exceptionnel. Votre satisfaction est notre priorité absolue et nous travaillons chaque jour pour mériter votre confiance." : "We are committed to providing quality products, expert advice, and exceptional after-sales service. Your satisfaction is our top priority, and we work every day to earn your trust." }
+                {t('commitmentDesc')}
               </p>
             </div>
           </div>
@@ -188,27 +167,27 @@ const OurVisionSection = ({lang: propLang}) => {
               <div className="text-5xl font-bold text-red-300 font-sans">
                 {animatedValues.clients}+
               </div>
-              <div className="font-sans text-red-100 text-lg">{ lang === 'fr' ? 'Clients Satisfaits' : 'Satisfied Clients' }</div>
+              <div className="font-sans text-red-100 text-lg">{t('statsClients')}</div>
               <p className="font-sans text-red-300/70 text-sm">
-                { lang === 'fr' ? 'Une communauté fidèle qui nous fait confiance' : 'A loyal community that trusts us' }
+                {t('statsClientsDesc')}
               </p>
             </div>
             <div className="space-y-4">
               <div className="text-5xl font-bold text-red-400 font-sans">
                 {animatedValues.produits}+
               </div>
-              <div className="font-sans text-red-100 text-lg">{ lang === 'fr' ? 'Produits Disponibles' : 'Available Products' }</div>
+              <div className="font-sans text-red-100 text-lg">{t('statsProducts')}</div>
               <p className="font-sans text-red-300/70 text-sm">
-                { lang === 'fr' ? 'Une sélection premium constamment mise à jour' : 'A constantly updated premium selection' }
+                {t('statsProductsDesc')}
               </p>
             </div>
             <div className="space-y-4">
               <div className="text-5xl font-bold text-red-500 font-sans">
                 {animatedValues.expertise}
               </div>
-              <div className="font-sans text-red-100 text-lg">{ lang === 'fr' ? "Ans d'Expertise" : "Years of Expertise" }</div>
+              <div className="font-sans text-red-100 text-lg">{t('statsExpertise')}</div>
               <p className="font-sans text-red-300/70 text-sm">
-                { lang === 'fr' ? "Un savoir-faire acquis au fil des années" : "Expertise acquired over the years" }
+                {t('statsExpertiseDesc')}
               </p>
             </div>
           </div>
@@ -217,7 +196,7 @@ const OurVisionSection = ({lang: propLang}) => {
         {/* Timeline */}
         <div className="mb-16">
           <h3 className="font-sans text-3xl font-bold text-white text-center mb-12">
-            { lang === 'fr' ? 'Notre Parcours' : 'Our Journey' }
+            {t('journeyTitle')}
           </h3>
           <div className="relative">
             {/* Timeline Line */}
@@ -256,17 +235,17 @@ const OurVisionSection = ({lang: propLang}) => {
         <div className="text-center">
           <div className="bg-gradient-to-r from-red-600/20 to-red-700/20 backdrop-blur-sm border border-white/30 rounded-3xl p-12">
             <h3 className="font-sans text-3xl font-bold text-white mb-4">
-              { lang === 'fr' ? "Prêt à Rejoindre l'Aventure ?" : "Ready to Join the Adventure?" }
+              {t('ctaVisionTitle')}
             </h3>
             <p className="font-sans text-red-100 text-lg mb-8 max-w-2xl mx-auto">
-              { lang === 'fr' ? "Découvrez comment nous pouvons transformer votre expérience numérique et vous accompagner vers le futur technologique." : "Discover how we can transform your digital experience and guide you towards the technological future." }
+              {t('ctaVisionDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="font-sans bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg">
-                { lang === 'fr' ? 'Découvrir Nos Services' : 'Discover Our Services' }
+                {t('ctaDiscover')}
               </button>
               <button className="font-sans bg-transparent hover:bg-white/10 border-2 border-white/30 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:border-red-200">
-                { lang === 'fr' ? 'Prendre Rendez-vous' : 'Make an Appointment' }
+                {t('ctaAppointment')}
               </button>
             </div>
           </div>

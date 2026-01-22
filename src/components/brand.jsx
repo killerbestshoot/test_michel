@@ -1,29 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
-const BrandsSection = ({ lang: propLang }) => {
-  const [lang, setLang] = useState('fr');
-
-  // Cookie helper
-  const getCookie = (name) => {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for(let i=0;i < ca.length;i++) {
-      let c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-  };
-
-  useEffect(() => {
-    // Read language from cookie or use prop
-    const saved = getCookie('mc_lang');
-    if (saved === 'fr' || saved === 'en') {
-      setLang(saved);
-    } else if (propLang === 'fr' || propLang === 'en') {
-      setLang(propLang);
-    }
-  }, [propLang]);
+const BrandsSection = () => {
+  const { t } = useLanguage();
   
   const brands = [
     // Première ligne (gauche -> droite)
@@ -64,11 +43,11 @@ const BrandsSection = ({ lang: propLang }) => {
         {/* Titre */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            { lang === 'fr' ? 'Toutes les marques, un seul expert ' : 'All Brands, One Expert' }
+            {t('brandsTitle')}
             {' '}<span className="text-red-300">MichelCell</span>
           </h2>
           <p className="text-red-100 text-lg max-w-2xl mx-auto">
-            { lang === 'fr' ? 'Découvrez notre vaste sélection de marques de confiance, soigneusement choisies pour vous offrir le meilleur en matière de technologie et de performance.' : 'Discover our vast selection of trusted brands, carefully chosen to offer you the best in technology and performance.' }
+            {t('brandsDesc')}
           </p>
         </div>
 
@@ -122,21 +101,21 @@ const BrandsSection = ({ lang: propLang }) => {
           <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
             <div className="text-3xl font-bold text-red-200 mb-2">50+</div>
             <div className="text-red-100">
-              {lang === 'fr' ? 'Marques disponibles' : 'Available Brands'}
+              {t('brandStatsBrands')}
             </div>
           </div>
           <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
             <div className="text-3xl font-bold text-red-200 mb-2">1000+</div>
             <div className="text-red-100">
-              {lang === 'fr' ? 'Produits en stock' : 'Products in Stock'}
+              {t('aboutStatsProd')}
             </div>
           </div>
           <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm border border-white/30 hover:border-red-200 transition-all duration-300 hover:scale-[1.02]">
             <div className="text-3xl font-bold text-red-200 mb-2">
-              { lang === 'fr' ? 'Expert' : 'Expert' }
+              {t('brandStatsExpert')}
             </div>
             <div className="text-red-100">
-              {lang === 'fr' ? 'Accompagnement personnalisé' : 'Personalized Support'}
+              {t('brandStatsSupport')}
             </div>
           </div>
         </div>

@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import Footer from "../components/footer";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Products() {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState("name");
 
   const categories = [
-    { id: "all", name: "Tous les produits", count: 48 },
-    { id: "smartphones", name: "Smartphones", count: 18 },
-    { id: "tablettes", name: "Tablettes", count: 8 },
-    { id: "laptops", name: "Laptops", count: 6 },
-    { id: "gaming", name: "Gaming", count: 7 },
-    { id: "accessories", name: "Accessoires", count: 9 },
+    { id: "all", name: t('catAll'), count: 48 },
+    { id: "smartphones", name: t('catSmartphones'), count: 18 },
+    { id: "tablettes", name: t('catTablets'), count: 8 },
+    { id: "laptops", name: t('catLaptops'), count: 6 },
+    { id: "gaming", name: t('catGaming'), count: 7 },
+    { id: "accessories", name: t('catAccessories'), count: 9 },
   ];
 
   const products = [
@@ -23,10 +25,10 @@ export default function Products() {
       originalPrice: "****",
       image: "/images/michel-cell-iphone-15.jpg",
       brand: "Apple",
-      features: ['Écran 6.7"', "Chip A17 Pro", "Camera 48MP", "Titanium"],
+      features: [t('featScreen67'), t('featChipA17'), t('featCam48'), t('featTitanium')],
       rating: 4.8,
       reviews: 124,
-      badge: "Nouveau",
+      badge: t('badgeNew'),
       stock: 15,
     },
     {
@@ -37,10 +39,10 @@ export default function Products() {
       originalPrice: "****",
       image: "/images/gs24.jpg",
       brand: "Samsung",
-      features: ['Écran 6.8"', "S Pen", "Camera 200MP", "AI Integration"],
+      features: [t('featScreen68'), t('featSPen'), t('featCam200'), t('featAI')],
       rating: 4.6,
       reviews: 89,
-      badge: "IA Intégrée",
+      badge: t('badgeAI'),
       stock: 8,
     },
     {
@@ -52,14 +54,14 @@ export default function Products() {
       image: "/images/macbook-pro-m3.jpg",
       brand: "Apple",
       features: [
-        "Chip M3 Pro",
-        '14" Liquid Retina',
-        "18h autonomie",
-        "18GB RAM",
+        t('featChipM3Pro'),
+        t('featScreen14'),
+        t('feat18h'),
+        t('feat18GB'),
       ],
       rating: 4.9,
       reviews: 67,
-      badge: "Professionnel",
+      badge: t('badgePro'),
       stock: 5,
     },
     {
@@ -70,10 +72,10 @@ export default function Products() {
       originalPrice: "****",
       image: "/images/ps5-slim.jpg",
       brand: "Sony",
-      features: ["1TB SSD", "4K 120Hz", "Ray Tracing", "DualSense"],
+      features: [t('feat1TB'), t('feat4K'), t('featRayTracing'), t('featDualSense')],
       rating: 4.7,
       reviews: 203,
-      badge: "Promo",
+      badge: t('badgePromo'),
       stock: 12,
     },
     {
@@ -84,10 +86,10 @@ export default function Products() {
       originalPrice: "****",
       image: "/images/2-ipad-air-m2.jpg",
       brand: "Apple",
-      features: ["Chip M2", '11" Liquid Retina', "Apple Pencil", "5G"],
+      features: [t('featChipM2'), t('featScreen11'), t('featPencil'), t('feat5G')],
       rating: 4.5,
       reviews: 45,
-      badge: "Polyvalent",
+      badge: t('badgeVersatile'),
       stock: 10,
     },
     {
@@ -99,14 +101,14 @@ export default function Products() {
       image: "/images/airPods-black.jpg",
       brand: "Apple",
       features: [
-        "Annulation bruit",
-        "Audio Spatial",
-        "MagSafe",
-        "30h batterie",
+        t('featANC'),
+        t('featSpatial'),
+        t('featMagSafe'),
+        t('feat30h'),
       ],
       rating: 4.8,
       reviews: 156,
-      badge: "Best-seller",
+      badge: t('badgeBestseller'),
       stock: 25,
     },
     {
@@ -117,10 +119,10 @@ export default function Products() {
       originalPrice: "****",
       image: "/images/collection_pxl.jpg",
       brand: "Google",
-      features: ["Android 14", "Camera 50MP", "7 ans updates", "Tensor G3"],
+      features: [t('featAndroid14'), t('featCam50'), t('feat7Updates'), t('featTensor')],
       rating: 4.4,
       reviews: 78,
-      badge: "Android Pur",
+      badge: t('badgePure'),
       stock: 7,
     },
     {
@@ -131,10 +133,10 @@ export default function Products() {
       originalPrice: "****",
       image: "/images/xbox-series-x.jpg",
       brand: "Microsoft",
-      features: ["1TB SSD", "4K 120Hz", "Game Pass", "Quick Resume"],
+      features: [t('feat1TB'), t('feat4K'), t('featGamePass'), t('featQuickResume')],
       rating: 4.6,
       reviews: 134,
-      badge: "Ultimate",
+      badge: t('badgeUltimate'),
       stock: 9,
     },
   ];
@@ -173,21 +175,21 @@ export default function Products() {
 
   const getBadgeColor = (badge) => {
     switch (badge) {
-      case "Nouveau":
+      case t('badgeNew'):
         return "bg-red-500";
-      case "Promo":
+      case t('badgePromo'):
         return "bg-red-600";
-      case "Best-seller":
+      case t('badgeBestseller'):
         return "bg-red-700";
-      case "IA Intégrée":
+      case t('badgeAI'):
         return "bg-red-400";
-      case "Professionnel":
+      case t('badgePro'):
         return "bg-red-500";
-      case "Android Pur":
+      case t('badgePure'):
         return "bg-red-600";
-      case "Ultimate":
+      case t('badgeUltimate'):
         return "bg-red-400";
-      case "Polyvalent":
+      case t('badgeVersatile'):
         return "bg-red-500";
       default:
         return "bg-red-300";
@@ -200,12 +202,10 @@ export default function Products() {
       <section className="relative py-16 bg-gradient-to-r from-red-900/30 to-red-800/30 border-b border-white/10">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-mono text-4xl md:text-5xl font-bold text-white mb-4">
-            Notre Collection
+            {t('productsHeroTitle')}
           </h1>
           <p className="font-mono text-red-100 text-xl max-w-2xl mx-auto">
-            Découvrez notre sélection premium de produits high-tech,
-            soigneusement sélectionnés pour leur qualité et performance
-            exceptionnelle.
+            {t('productsHeroDesc')}
           </p>
         </div>
       </section>
@@ -232,16 +232,16 @@ export default function Products() {
 
           {/* Sort By */}
           <div className="flex items-center gap-4">
-            <span className="font-mono text-red-100">Trier par :</span>
+            <span className="font-mono text-red-100">{t('sortLabel')}</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className="font-mono bg-white/10 border border-white/30 rounded-2xl px-4 py-2 text-white focus:outline-none focus:border-red-500 transition-all duration-300"
             >
-              <option value="name">Nom</option>
-              <option value="price-asc">Prix croissant</option>
-              <option value="price-desc">Prix décroissant</option>
-              <option value="rating">Meilleures notes</option>
+              <option value="name">{t('sortName')}</option>
+              <option value="price-asc">{t('sortPriceAsc')}</option>
+              <option value="price-desc">{t('sortPriceDesc')}</option>
+              <option value="rating">{t('sortRating')}</option>
             </select>
           </div>
         </div>
@@ -273,7 +273,7 @@ export default function Products() {
                         : "bg-red-700/20 text-red-500"
                   }`}
                 >
-                  {product.stock} en stock
+                  {product.stock} {t('stockLabel')}
                 </span>
               </div>
 
@@ -320,7 +320,7 @@ export default function Products() {
                   ))}
                   {product.features.length > 2 && (
                     <div className="font-mono text-red-300 text-sm">
-                      +{product.features.length - 2} fonctionnalités
+                      +{product.features.length - 2} {t('featuresLabel')}
                     </div>
                   )}
                 </div>
@@ -340,7 +340,7 @@ export default function Products() {
 
                   {/* CTA Button */}
                   <button className="bg-red-600 hover:bg-red-700 text-white font-mono font-semibold py-2 px-4 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    Voir
+                    {t('viewButton')}
                   </button>
                 </div>
               </div>
@@ -351,7 +351,7 @@ export default function Products() {
         {/* Load More */}
         <div className="text-center mt-12">
           <button className="font-mono bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:border-red-200">
-            Charger plus de produits
+            {t('loadMore')}
           </button>
         </div>
 
@@ -361,19 +361,19 @@ export default function Products() {
             <div className="text-3xl font-bold text-red-300 font-mono mb-2">
               48+
             </div>
-            <div className="font-mono text-red-100">Produits disponibles</div>
+            <div className="font-mono text-red-100">{t('statAvailable')}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-red-400 font-mono mb-2">
               4.7/5
             </div>
-            <div className="font-mono text-red-100">Note moyenne</div>
+            <div className="font-mono text-red-100">{t('statRating')}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-red-500 font-mono mb-2">
               24h
             </div>
-            <div className="font-mono text-red-100">Livraison express</div>
+            <div className="font-mono text-red-100">{t('statDelivery')}</div>
           </div>
         </div>
       </div>

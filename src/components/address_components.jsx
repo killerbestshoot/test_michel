@@ -1,6 +1,8 @@
+import { useLanguage } from '../context/LanguageContext';
+
 export const addressComponents = {
   addresses: {
-    "Département du Sud": {
+    "addrSud": {
       street: "73 Rue Nicolas Geffrard",
       postalCode: "HT2345",
       city: "Arrondissement des Cayes",
@@ -9,7 +11,7 @@ export const addressComponents = {
       phone: "+(509) 4776 39 92",
       email: "sud@michelcell.ht",
     },
-    "Département du Nord": {
+    "addrNord": {
       street: "Rue 14, & 15 I",
       postalCode: "HT1110",
       city: "Cap-Haïtien",
@@ -20,11 +22,13 @@ export const addressComponents = {
     },
   },
 
-  AddressCard: ({ title, address }) => (
+  AddressCard: ({ title, address }) => {
+    const { t } = useLanguage();
+    return (
     <div className="bg-white/10 backdrop-blur-md border border-white/30 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:bg-white/20 hover:border-red-200 transition-all duration-300 group">
       <h4 className="font-sans font-bold text-white text-lg mb-4 flex items-center gap-2 justify-center">
         <span className="w-2 h-2 bg-red-400 rounded-full group-hover:scale-125 transition-transform"></span>
-        {title}
+        {t(title) || title}
       </h4>
 
       <div className="space-y-4 flex flex-col justify-start">
@@ -32,7 +36,7 @@ export const addressComponents = {
           <span className="text-red-300 w-7 h-7 flex items-center justify-center min-w-7">
             <img
               src="/icon/location-map-navigation-pin-svgrepo-com.svg"
-              alt="location_svg"
+              alt={t('altLocation')}
             />
           </span>
           <div className="flex flex-col justify-start">
@@ -47,7 +51,7 @@ export const addressComponents = {
 
         <div className="flex items-center gap-3">
           <span className="text-red-300 w-7 h-7 flex items-center justify-center">
-            <img src="/icon/phone-svgrepo-com.svg" alt="phone_svg" />
+            <img src="/icon/phone-svgrepo-com.svg" alt={t('altPhone')} />
           </span>
           <a
             href={`tel:${address.phone}`}
@@ -61,7 +65,7 @@ export const addressComponents = {
           <span className="text-red-300 w-7 h-7 flex items-center justify-center">
             <img
               src="/icon/email-letter-mail-message-svgrepo-com.svg"
-              alt="email_svg"
+              alt={t('altEmail')}
             />
           </span>
           <a
@@ -79,11 +83,12 @@ export const addressComponents = {
           className="inline-flex items-center gap-2 font-sans text-red-400 text-sm hover:text-red-300 transition-colors duration-300 mt-3 group"
         >
           <span className="w-6 h-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-            <img src="/icon/maps-me-svgrepo-com.svg" alt="maps_svg" />
+            <img src="/icon/maps-me-svgrepo-com.svg" alt={t('altMap')} />
           </span>
-          Voir sur la carte
+          {t('viewOnMap')}
         </a>
       </div>
     </div>
-  ),
+  );
+  },
 };

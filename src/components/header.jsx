@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 const logo = '/icon/michell_cell_logo.svg';
 
 const Header = () => {
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
   const hamburgerBtnRef = useRef(null);
@@ -66,7 +68,7 @@ const Header = () => {
                 to="/"
                 className="relative text-lg font-semibold hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
-                Accueil
+                {t('home')}
               </Link>
             </li>
             <li>
@@ -74,7 +76,7 @@ const Header = () => {
                 to="/products"
                 className="relative text-lg hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
-                Smartphones
+                {t('smartphones')}
               </Link>
             </li>
             <li>
@@ -82,7 +84,7 @@ const Header = () => {
                 to="/accessories"
                 className="relative text-lg hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
-                Accessoires
+                {t('accessories')}
               </Link>
             </li>
             <li>
@@ -90,7 +92,7 @@ const Header = () => {
                 to="/about"
                 className="relative text-lg hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
-                À propos
+                {t('about')}
               </Link>
             </li>
             <li>
@@ -98,7 +100,7 @@ const Header = () => {
                 to="/contact"
                 className="relative text-lg hover:text-red-200 transition-all duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-500 after:to-red-300 after:transition-all after:duration-300 hover:after:w-full"
               >
-                Contact
+                {t('contact')}
               </Link>
             </li>
           </ul>
@@ -107,13 +109,13 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-6">
             <button 
               className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl"
-              aria-label="Recherche"
+              aria-label={t('search')}
             >
               🔍
             </button>
             <button 
               className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl relative"
-              aria-label="Panier"
+              aria-label={t('cart')}
             >
               🛒
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -126,7 +128,7 @@ const Header = () => {
           <div className="lg:hidden flex items-center space-x-4">
             <button 
               className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl"
-              aria-label="Panier"
+              aria-label={t('cart')}
             >
               🛒
             </button>
@@ -136,7 +138,7 @@ const Header = () => {
                 isMenuOpen ? 'rotate-90' : ''
               }`}
               onClick={toggleMenu}
-              aria-label="Menu"
+              aria-label={t('menu')}
               aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? '✕' : '☰'}
@@ -162,7 +164,7 @@ const Header = () => {
                 className="block text-white text-lg font-semibold hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
-                Accueil
+                {t('home')}
               </Link>
             </li>
             <li>
@@ -171,7 +173,7 @@ const Header = () => {
                 className="block text-white text-lg hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
-                Smartphones
+                {t('smartphones')}
               </Link>
             </li>
             <li>
@@ -180,7 +182,7 @@ const Header = () => {
                 className="block text-white text-lg hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
-                Accessoires
+                {t('accessories')}
               </Link>
             </li>
             <li>
@@ -189,7 +191,7 @@ const Header = () => {
                 className="block text-white text-lg hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
-                À propos
+                {t('about')}
               </Link>
             </li>
             <li>
@@ -198,20 +200,20 @@ const Header = () => {
                 className="block text-white text-lg hover:text-red-200 hover:bg-white/10 transition-all duration-300 py-3 px-4 rounded-lg"
                 onClick={closeMenu}
               >
-                Contact
+                {t('contact')}
               </Link>
             </li>
             <li className="pt-4 border-t border-white/20">
               <div className="flex space-x-6 py-2 px-4 justify-center">
                 <button 
                   className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl"
-                  aria-label="Recherche"
+                  aria-label={t('search')}
                 >
                   🔍
                 </button>
                 <button 
                   className="text-white hover:text-red-200 hover:scale-110 transition-transform duration-300 text-xl relative"
-                  aria-label="Panier"
+                  aria-label={t('cart')}
                 >
                   🛒
                   <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
